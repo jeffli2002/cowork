@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cowork.mobi/sitemap.xml
+Sitemap: https://cowork.mobi/sitemap.xmls
