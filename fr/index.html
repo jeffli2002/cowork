@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cowork | IA axée sur l'action pour le travail</title>
+    <meta
+      name="description"
+      content="Cowork est un agent de bureau IA axé sur l'action qui planifie, exécute et livre un travail réel dans un environnement local sécurisé."
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+        --ink: #141413;
+        --paper: #faf9f5;
+        --stone: #e8e6dc;
+        --ash: #b0aea5;
+        --accent-1: #d97757;
+        --accent-2: #6a9bcc;
+        --accent-3: #788c5d;
+        --shadow: 0 24px 60px rgba(20, 20, 19, 0.12);
+        --radius-lg: 28px;
+        --radius-md: 18px;
+        --radius-sm: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Lora", Georgia, serif;
+        color: var(--ink);
+        background:
+          radial-gradient(1200px 600px at 10% -20%, rgba(217, 119, 87, 0.18), transparent 60%),
+          radial-gradient(900px 500px at 90% 0%, rgba(106, 155, 204, 0.18), transparent 65%),
+          radial-gradient(800px 700px at 50% 100%, rgba(120, 140, 93, 0.16), transparent 60%),
+          linear-gradient(180deg, #faf9f5 0%, #f2efe6 60%, #faf9f5 100%);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+            90deg,
+            rgba(20, 20, 19, 0.02) 0,
+            rgba(20, 20, 19, 0.02) 1px,
+            transparent 1px,
+            transparent 6px
+          ),
+          repeating-linear-gradient(
+            0deg,
+            rgba(20, 20, 19, 0.02) 0,
+            rgba(20, 20, 19, 0.02) 1px,
+            transparent 1px,
+            transparent 6px
+          );
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+        transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      img:hover {
+        transform: scale(1.02);
+        filter: saturate(1.08);
+      }
+
+      .page {
+        position: relative;
+        z-index: 1;
+      }
+
+      .container {
+        width: min(1160px, 92vw);
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(14px);
+        background: rgba(250, 249, 245, 0.85);
+        border-bottom: 1px solid rgba(20, 20, 19, 0.08);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 18px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: #D97757;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+      
+      .brand-mark i {
+        color: white;
+        font-size: 18px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .nav-links a {
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 2px;
+        background: var(--accent-1);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .lang-dropdown {
+        position: relative;
+      }
+
+      .lang-dropdown select {
+        appearance: none;
+        border-radius: 999px;
+        border: 1px solid rgba(20, 20, 19, 0.2);
+        background: var(--paper);
+        padding: 8px 34px 8px 14px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+      }
+
+      .lang-dropdown::after {
+        content: "v";
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: var(--accent-1);
+        pointer-events: none;
+      }
+
+      .btn {
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn-primary {
+        background: var(--ink);
+        color: var(--paper);
+        box-shadow: var(--shadow);
+      }
+
+      .btn-secondary {
+        border-color: rgba(20, 20, 19, 0.3);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 26px 55px rgba(20, 20, 19, 0.18);
+        border-color: rgba(20, 20, 19, 0.18);
+      }
+
+      .hero {
+        padding: 90px 0 50px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 48px;
+        align-items: center;
+      }
+
+      .hero-centered .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        text-align: center;
+      }
+
+      .eyebrow {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--accent-3);
+      }
+
+      h1 {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: clamp(36px, 6vw, 60px);
+        line-height: 1.05;
+        margin: 16px 0 18px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        line-height: 1.7;
+        max-width: 650px;
+        color: rgba(20, 20, 19, 0.8);
+      }
+
+      .hero.hero-centered p {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .hero-centered .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-meta {
+        margin-top: 28px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: rgba(20, 20, 19, 0.65);
+      }
+
+      .hero-centered .hero-meta {
+        justify-content: center;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(217, 119, 87, 0.12);
+        color: var(--accent-1);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-visual {
+        position: relative;
+        background: var(--paper);
+        border-radius: var(--radius-lg);
+        padding: 30px;
+        border: 1px solid rgba(20, 20, 19, 0.08);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-visual::before {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border-radius: 20px;
+        border: 1px dashed rgba(20, 20, 19, 0.12);
+      }
+
+      .hero-visual h3 {
+        font-family: "Poppins", Arial, sans-serif;
+        margin-top: 0;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 13px;
+        color: var(--accent-2);
+      }
+
+      .signal-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .signal {
+        background: var(--stone);
+        padding: 14px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .mission-control {
+        padding-top: 10px;
+      }
+
+      .mission-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+
+      .hero-card {
+        position: relative;
+        background: var(--paper);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(20, 20, 19, 0.08);
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 20px;
+        border-radius: 22px;
+        border: 1px dashed rgba(20, 20, 19, 0.12);
+        pointer-events: none;
+      }
+
+      .hero-card h3 {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        margin: 0 0 16px;
+        color: var(--accent-1);
+      }
+
+      .task-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .task {
+        background: var(--stone);
+        padding: 14px 16px;
+        border-radius: var(--radius-sm);
+        display: grid;
+        gap: 6px;
+        font-size: 14px;
+      }
+
+      .task strong {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: clamp(28px, 4vw, 40px);
+        margin: 0 0 12px;
+      }
+
+      .section-lead {
+        max-width: 620px;
+        font-size: 17px;
+        color: rgba(20, 20, 19, 0.75);
+        line-height: 1.7;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+        margin-top: 36px;
+      }
+
+      .feature-card {
+        background: var(--paper);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        border: 1px solid rgba(20, 20, 19, 0.08);
+        box-shadow: 0 16px 30px rgba(20, 20, 19, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: rgba(106, 155, 204, 0.14);
+      }
+
+      .feature-card h3 {
+        font-family: "Poppins", Arial, sans-serif;
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(20, 20, 19, 0.72);
+      }
+
+      .steps {
+        margin-top: 30px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        align-items: start;
+        padding: 18px;
+        border-radius: var(--radius-md);
+        background: rgba(20, 20, 19, 0.03);
+        border: 1px solid rgba(20, 20, 19, 0.06);
+      }
+
+      .step span {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--paper);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Poppins", Arial, sans-serif;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        margin-top: 30px;
+      }
+
+      .security-panel {
+        background: var(--ink);
+        color: var(--paper);
+        padding: 28px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+      }
+
+      .security-panel h3 {
+        font-family: "Poppins", Arial, sans-serif;
+        margin-top: 0;
+      }
+
+      .security-panel ul {
+        padding-left: 18px;
+      }
+
+      .use-cases {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        margin-top: 30px;
+      }
+
+      .case {
+        background: rgba(250, 249, 245, 0.7);
+        border-radius: var(--radius-md);
+        padding: 20px;
+        border: 1px solid rgba(20, 20, 19, 0.08);
+      }
+
+      .case h4 {
+        font-family: "Poppins", Arial, sans-serif;
+        margin: 0 0 10px;
+      }
+
+      .faq {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      details {
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(20, 20, 19, 0.1);
+        background: var(--paper);
+        padding: 16px 18px;
+      }
+
+      details summary {
+        font-family: "Poppins", Arial, sans-serif;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details summary::after {
+        content: "+";
+        font-size: 18px;
+        color: var(--accent-1);
+        transition: transform 0.2s ease;
+      }
+
+      details[open] summary::after {
+        content: "–";
+        transform: rotate(90deg);
+      }
+
+      .cta {
+        background: linear-gradient(135deg, rgba(20, 20, 19, 0.95), rgba(20, 20, 19, 0.85)),
+          radial-gradient(200px 200px at 10% 0%, rgba(217, 119, 87, 0.45), transparent 70%),
+          radial-gradient(300px 200px at 90% 20%, rgba(106, 155, 204, 0.35), transparent 70%);
+        color: var(--paper);
+        border-radius: var(--radius-lg);
+        padding: 40px;
+        display: grid;
+        gap: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .cta h2 {
+        margin: 0;
+      }
+
+      footer {
+        padding: 40px 0 60px;
+        font-size: 13px;
+        color: rgba(20, 20, 19, 0.65);
+      }
+
+      .footer-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px 48px;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+
+      .footer-title {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(20, 20, 19, 0.55);
+        margin: 0 0 10px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-cta {
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="container nav">
+          <a href="index.html" class="brand">
+            <span class="brand-mark" aria-hidden="true" title="Cowork">
+              <i class="fas fa-users-cog"></i>
+            </span>
+            Cowork
+          </a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="#features">Fonctionnalités</a>
+            <a href="#workflow">Fonctionnement</a>
+            <a href="#safety">Sécurité</a>
+            <a href="../guide.html">Guide</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <div class="nav-cta">
+            <div class="lang-dropdown">
+              <select aria-label="Language" data-locale-select>
+                <option value="en">English</option>
+                <option value="zh">简体中文</option>
+                <option value="ja">日本語</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="fr" selected>Français</option>
+              </select>
+            </div>
+            <a class="btn btn-primary" href="../guide.html">Commencer</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero hero-centered">
+          <div class="container hero-grid">
+            <div data-reveal>
+              <div class="tag">Aperçu de recherche</div>
+              <div class="eyebrow">Claude Cowork</div>
+              <h1>Transformer la conversation en travail réel.</h1>
+              <p>
+                <span style="display: inline-flex; align-items: center; gap: 8px; margin-right: 6px; vertical-align: middle;">
+                  <img src="/anthropic-logo.svg" alt="Anthropic" width="20" height="20" style="display: inline-block; flex-shrink: 0; object-fit: contain;">
+                  <span style="font-weight: 600; color: #141413;">Anthropic</span>
+                </span>
+                Claude Cowork est votre agent de bureau IA axé sur l'action. Il planifie,
+                exécute et livre dans un espace de travail local sécurisé pour passer de
+                la demande aux livrables sans relais.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="../guide.html">Commencer</a>
+              </div>
+              <div class="hero-meta">
+                <div>macOS + Claude Max requis</div>
+                <div>Accès aux fichiers locaux sous votre contrôle</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mission-control">
+          <div class="container mission-grid">
+            <div data-reveal>
+              <div class="eyebrow">Contrôle de mission en direct</div>
+              <h2>Voir chaque étape avant l'exécution.</h2>
+              <p class="section-lead">
+                Un tableau de contrôle dédié montre comment Claude Cowork planifie, exécute
+                et livre afin que vous sachiez toujours ce qui se passe.
+              </p>
+            </div>
+            <div class="hero-card card" data-reveal>
+              <h3>Contrôle de mission en direct</h3>
+              <div class="task-stack">
+                <div class="task">
+                  <strong>Planifier</strong>
+                  Claude décompose l'objectif en sous-tâches parallèles.
+                </div>
+                <div class="task">
+                  <strong>Exécuter</strong>
+                  Le travail se déroule dans une VM isolée avec votre approbation.
+                </div>
+                <div class="task">
+                  <strong>Livrer</strong>
+                  Les fichiers finis apparaissent dans vos dossiers locaux, prêts à être envoyés.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features">
+          <div class="container" data-reveal>
+            <h2>Conçu pour le vrai travail de bureau</h2>
+            <p class="section-lead">
+              Claude Cowork ne se contente pas de répondre. Il coordonne, édite et produit
+              des documents professionnels dans les formats que votre équipe utilise déjà.
+            </p>
+            <div class="feature-grid">
+              <div class="feature-card card">
+                <h3>Accès aux fichiers locaux</h3>
+                <p>Aucun téléversement. Claude lit et modifie les dossiers que vous autorisez.</p>
+              </div>
+              <div class="feature-card card">
+                <h3>Collaboration de sous-agents</h3>
+                <p>Les objectifs complexes sont divisés en tâches parallèles pour des résultats plus rapides.</p>
+              </div>
+              <div class="feature-card card">
+                <h3>Sortie professionnelle</h3>
+                <p>Prise en charge native d'Excel, PowerPoint et Word.</p>
+              </div>
+              <div class="feature-card card">
+                <h3>Tâches longues</h3>
+                <p>Laissez Cowork tourner en arrière-plan sans limites de contexte.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="workflow">
+          <div class="container" data-reveal>
+            <h2>Fonctionnement</h2>
+            <p class="section-lead">
+              Un flux simple en quatre étapes vous garde aux commandes pendant que Cowork
+              fait le gros du travail.
+            </p>
+            <div class="steps">
+              <div class="step card">
+                <span>1</span>
+                <div>
+                  <h3>Définir l'objectif</h3>
+                  <p>Décrivez le résultat en langage naturel, comme à un collègue.</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>2</span>
+                <div>
+                  <h3>Construire le plan</h3>
+                  <p>Claude crée une approche étape par étape et confirme avant l'exécution.</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>3</span>
+                <div>
+                  <h3>Exécuter en sécurité</h3>
+                  <p>Les tâches s'exécutent dans une VM isolée avec une visibilité et un contrôle clairs.</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>4</span>
+                <div>
+                  <h3>Recevoir les résultats</h3>
+                  <p>Les résultats arrivent directement dans vos dossiers locaux, prêts à être envoyés.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="safety">
+          <div class="container" data-reveal>
+            <h2>Sécurité et contrôle</h2>
+            <p class="section-lead">
+              Cowork est conçu pour protéger les fichiers sensibles tout en vous donnant
+              une visibilité totale sur chaque étape.
+            </p>
+            <div class="split">
+              <div>
+                <h3>Basé sur l'isolation VM</h3>
+                <p>
+                  Chaque action s'exécute dans une machine virtuelle dédiée, protégeant votre
+                  système et assurant des limites claires entre l'automatisation IA et votre
+                  environnement principal.
+                </p>
+                <div class="use-cases">
+                  <div class="case card">
+                    <h4>Supervision en temps réel</h4>
+                    <p>Surveillez les actions, mettez en pause ou intervenez à tout moment.</p>
+                  </div>
+                  <div class="case card">
+                    <h4>Accès limité</h4>
+                    <p>Accordez uniquement les dossiers dont Cowork a besoin.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="security-panel card">
+                <h3>Signaux de confiance</h3>
+                <ul>
+                  <li>Exécution locale avec autorisation explicite de l'utilisateur.</li>
+                  <li>Plan lisible avant l'automatisation.</li>
+                  <li>Journal clair de chaque action.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="use-cases">
+          <div class="container" data-reveal>
+            <h2>Cas d'usage quotidiens</h2>
+            <p class="section-lead">
+              Des tableurs aux notes de recherche, Cowork gère le travail de bureau
+              en plusieurs étapes sans surcharge manuelle.
+            </p>
+            <div class="use-cases">
+              <div class="case card">
+                <h4>Analyse financière</h4>
+                <p>Agrégez des CSV et livrez des rapports soignés.</p>
+              </div>
+              <div class="case card">
+                <h4>Étude de marché</h4>
+                <p>Collectez des sources, synthétisez les conclusions et mettez en forme un brief.</p>
+              </div>
+              <div class="case card">
+                <h4>Nettoyage de documents</h4>
+                <p>Renommez, classez et résumez des milliers de fichiers.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq">
+          <div class="container" data-reveal>
+            <h2>FAQ</h2>
+            <div class="faq">
+              <details class="card" open>
+                <summary>Dois-je coder ?</summary>
+                <p>
+                  Non. Décrivez le résultat en langage clair. Cowork planifie les étapes,
+                  exécute dans une VM sécurisée et dépose les fichiers finis dans vos dossiers locaux.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Mes fichiers sont-ils téléversés ?</summary>
+                <p>
+                  Non. Cowork travaille uniquement sur les dossiers que vous autorisez et agit dans
+                  une VM isolée. Vous pouvez revoir chaque étape et garder le contrôle de l'accès.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Quels types de sorties peut-il fournir ?</summary>
+                <p>
+                  Des fichiers professionnels et natifs que votre équipe utilise déjà, y compris des
+                  feuilles Excel avec formules, des présentations PowerPoint et des documents Word.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Peut-il gérer des tâches longues ?</summary>
+                <p>
+                  Oui. Cowork est conçu pour des workflows longs sans expiration de session et peut
+                  terminer des tâches en plusieurs étapes du début à la fin.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Quelles langues sont prises en charge ?</summary>
+                <p>
+                  Anglais (par défaut), chinois simplifié, japonais, espagnol, allemand et français
+                  avec un sélecteur manuel.
+                </p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer>
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <p class="footer-title">Explorer</p>
+              <div class="footer-links">
+                <a href="../privacy.html">Politique de confidentialité</a>
+                <a href="../terms.html">Conditions d'utilisation</a>
+              </div>
+            </div>
+            <div>
+              <p class="footer-title">Cas de référence</p>
+              <div class="footer-links">
+                <a href="https://viecom.pro" target="_blank" rel="noopener">AI Ecommerce</a>
+                <a href="https://futurai.org" target="_blank" rel="noopener">AI Education</a>
+              </div>
+            </div>
+          </div>
+          <p data-disclaimer>
+            Ce projet (la page d'atterrissage Claude Cowork) est un projet indépendant créé à des fins d'apprentissage et de recherche et n'est ni
+            sponsorisé, ni approuvé, ni affilié à Anthropic (Claude) d'aucune manière. Les informations produit présentées sur cette page sont compilées
+            et déduites à partir de sources publiques et ne représentent pas la position officielle d'Anthropic. Pour l'utilisation réelle de Claude Cowork,
+            veuillez vous référer aux informations et conditions publiées officiellement par Anthropic.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const revealItems = document.querySelectorAll("[data-reveal]");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      revealItems.forEach((item) => observer.observe(item));
+
+      const LOCALE_KEY = "coworkLocale";
+      const localeSelect = document.querySelector("[data-locale-select]");
+      const localePages = {
+        en: "../en/",
+        zh: "../zh/",
+        ja: "../ja/",
+        es: "../es/",
+        de: "../de/",
+        fr: "../fr/"
+      };
+
+      const normalizeLocale = (value) => {
+        if (!value) {
+          return "en";
+        }
+        const lower = value.toLowerCase();
+        if (lower.startsWith("zh")) {
+          return "zh";
+        }
+        if (lower.startsWith("ja")) {
+          return "ja";
+        }
+        if (lower.startsWith("es")) {
+          return "es";
+        }
+        if (lower.startsWith("de")) {
+          return "de";
+        }
+        if (lower.startsWith("fr")) {
+          return "fr";
+        }
+        return "en";
+      };
+
+      const pageLocale = normalizeLocale(
+        document.documentElement.lang || (localeSelect && localeSelect.value)
+      );
+      window.localStorage.setItem(LOCALE_KEY, pageLocale);
+      if (localeSelect) {
+        localeSelect.value = pageLocale;
+      }
+
+      if (localeSelect) {
+        localeSelect.addEventListener("change", (event) => {
+          const selected = normalizeLocale(event.target.value);
+          window.localStorage.setItem(LOCALE_KEY, selected);
+          const target = localePages[selected] || localePages.en;
+          if (target) {
+            window.location.href = target;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

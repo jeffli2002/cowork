@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cowork | 行动优先的工作型 AI</title>
+    <meta
+      name="description"
+      content="Cowork 是一款行动优先的 AI 办公代理，可在安全的本地环境中规划、执行并交付真实工作成果。"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+        --ink: #141413;
+        --paper: #faf9f5;
+        --stone: #e8e6dc;
+        --ash: #b0aea5;
+        --accent-1: #d97757;
+        --accent-2: #6a9bcc;
+        --accent-3: #788c5d;
+        --shadow: 0 24px 60px rgba(20, 20, 19, 0.12);
+        --radius-lg: 28px;
+        --radius-md: 18px;
+        --radius-sm: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Lora", Georgia, serif;
+        color: var(--ink);
+        background:
+          radial-gradient(1200px 600px at 10% -20%, rgba(217, 119, 87, 0.18), transparent 60%),
+          radial-gradient(900px 500px at 90% 0%, rgba(106, 155, 204, 0.18), transparent 65%),
+          radial-gradient(800px 700px at 50% 100%, rgba(120, 140, 93, 0.16), transparent 60%),
+          linear-gradient(180deg, #faf9f5 0%, #f2efe6 60%, #faf9f5 100%);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+            90deg,
+            rgba(20, 20, 19, 0.02) 0,
+            rgba(20, 20, 19, 0.02) 1px,
+            transparent 1px,
+            transparent 6px
+          ),
+          repeating-linear-gradient(
+            0deg,
+            rgba(20, 20, 19, 0.02) 0,
+            rgba(20, 20, 19, 0.02) 1px,
+            transparent 1px,
+            transparent 6px
+          );
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+        transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      img:hover {
+        transform: scale(1.02);
+        filter: saturate(1.08);
+      }
+
+      .page {
+        position: relative;
+        z-index: 1;
+      }
+
+      .container {
+        width: min(1160px, 92vw);
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(14px);
+        background: rgba(250, 249, 245, 0.85);
+        border-bottom: 1px solid rgba(20, 20, 19, 0.08);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 18px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: #D97757;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+      
+      .brand-mark i {
+        color: white;
+        font-size: 18px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .nav-links a {
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 2px;
+        background: var(--accent-1);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .lang-dropdown {
+        position: relative;
+      }
+
+      .lang-dropdown select {
+        appearance: none;
+        border-radius: 999px;
+        border: 1px solid rgba(20, 20, 19, 0.2);
+        background: var(--paper);
+        padding: 8px 34px 8px 14px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+      }
+
+      .lang-dropdown::after {
+        content: "v";
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: var(--accent-1);
+        pointer-events: none;
+      }
+
+      .btn {
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn-primary {
+        background: var(--ink);
+        color: var(--paper);
+        box-shadow: var(--shadow);
+      }
+
+      .btn-secondary {
+        border-color: rgba(20, 20, 19, 0.3);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 26px 55px rgba(20, 20, 19, 0.18);
+        border-color: rgba(20, 20, 19, 0.18);
+      }
+
+      .hero {
+        padding: 90px 0 50px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 48px;
+        align-items: center;
+      }
+
+      .hero-centered .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        text-align: center;
+      }
+
+      .eyebrow {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--accent-3);
+      }
+
+      h1 {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: clamp(36px, 6vw, 60px);
+        line-height: 1.05;
+        margin: 16px 0 18px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        line-height: 1.7;
+        max-width: 650px;
+        color: rgba(20, 20, 19, 0.8);
+      }
+
+      .hero.hero-centered p {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .hero-centered .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-meta {
+        margin-top: 28px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: rgba(20, 20, 19, 0.65);
+      }
+
+      .hero-centered .hero-meta {
+        justify-content: center;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(217, 119, 87, 0.12);
+        color: var(--accent-1);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-visual {
+        position: relative;
+        background: var(--paper);
+        border-radius: var(--radius-lg);
+        padding: 30px;
+        border: 1px solid rgba(20, 20, 19, 0.08);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-visual::before {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border-radius: 20px;
+        border: 1px dashed rgba(20, 20, 19, 0.12);
+      }
+
+      .hero-visual h3 {
+        font-family: "Poppins", Arial, sans-serif;
+        margin-top: 0;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 13px;
+        color: var(--accent-2);
+      }
+
+      .signal-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .signal {
+        background: var(--stone);
+        padding: 14px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .mission-control {
+        padding-top: 10px;
+      }
+
+      .mission-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+
+      .hero-card {
+        position: relative;
+        background: var(--paper);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(20, 20, 19, 0.08);
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 20px;
+        border-radius: 22px;
+        border: 1px dashed rgba(20, 20, 19, 0.12);
+        pointer-events: none;
+      }
+
+      .hero-card h3 {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        margin: 0 0 16px;
+        color: var(--accent-1);
+      }
+
+      .task-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .task {
+        background: var(--stone);
+        padding: 14px 16px;
+        border-radius: var(--radius-sm);
+        display: grid;
+        gap: 6px;
+        font-size: 14px;
+      }
+
+      .task strong {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: clamp(28px, 4vw, 40px);
+        margin: 0 0 12px;
+      }
+
+      .section-lead {
+        max-width: 620px;
+        font-size: 17px;
+        color: rgba(20, 20, 19, 0.75);
+        line-height: 1.7;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+        margin-top: 36px;
+      }
+
+      .feature-card {
+        background: var(--paper);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        border: 1px solid rgba(20, 20, 19, 0.08);
+        box-shadow: 0 16px 30px rgba(20, 20, 19, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: rgba(106, 155, 204, 0.14);
+      }
+
+      .feature-card h3 {
+        font-family: "Poppins", Arial, sans-serif;
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: rgba(20, 20, 19, 0.72);
+      }
+
+      .steps {
+        margin-top: 30px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        align-items: start;
+        padding: 18px;
+        border-radius: var(--radius-md);
+        background: rgba(20, 20, 19, 0.03);
+        border: 1px solid rgba(20, 20, 19, 0.06);
+      }
+
+      .step span {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--paper);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Poppins", Arial, sans-serif;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        margin-top: 30px;
+      }
+
+      .security-panel {
+        background: var(--ink);
+        color: var(--paper);
+        padding: 28px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+      }
+
+      .security-panel h3 {
+        font-family: "Poppins", Arial, sans-serif;
+        margin-top: 0;
+      }
+
+      .security-panel ul {
+        padding-left: 18px;
+      }
+
+      .use-cases {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        margin-top: 30px;
+      }
+
+      .case {
+        background: rgba(250, 249, 245, 0.7);
+        border-radius: var(--radius-md);
+        padding: 20px;
+        border: 1px solid rgba(20, 20, 19, 0.08);
+      }
+
+      .case h4 {
+        font-family: "Poppins", Arial, sans-serif;
+        margin: 0 0 10px;
+      }
+
+      .faq {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      details {
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(20, 20, 19, 0.1);
+        background: var(--paper);
+        padding: 16px 18px;
+      }
+
+      details summary {
+        font-family: "Poppins", Arial, sans-serif;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details summary::after {
+        content: "+";
+        font-size: 18px;
+        color: var(--accent-1);
+        transition: transform 0.2s ease;
+      }
+
+      details[open] summary::after {
+        content: "–";
+        transform: rotate(90deg);
+      }
+
+      .cta {
+        background: linear-gradient(135deg, rgba(20, 20, 19, 0.95), rgba(20, 20, 19, 0.85)),
+          radial-gradient(200px 200px at 10% 0%, rgba(217, 119, 87, 0.45), transparent 70%),
+          radial-gradient(300px 200px at 90% 20%, rgba(106, 155, 204, 0.35), transparent 70%);
+        color: var(--paper);
+        border-radius: var(--radius-lg);
+        padding: 40px;
+        display: grid;
+        gap: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .cta h2 {
+        margin: 0;
+      }
+
+      footer {
+        padding: 40px 0 60px;
+        font-size: 13px;
+        color: rgba(20, 20, 19, 0.65);
+      }
+
+      .footer-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px 48px;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+
+      .footer-title {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(20, 20, 19, 0.55);
+        margin: 0 0 10px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-cta {
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="container nav">
+          <a href="index.html" class="brand">
+            <span class="brand-mark" aria-hidden="true" title="Cowork">
+              <i class="fas fa-users-cog"></i>
+            </span>
+            Cowork
+          </a>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="#features">功能</a>
+            <a href="#workflow">工作原理</a>
+            <a href="#safety">安全</a>
+            <a href="../guide.html">指南</a>
+            <a href="#faq">常见问题</a>
+          </nav>
+          <div class="nav-cta">
+            <div class="lang-dropdown">
+              <select aria-label="Language" data-locale-select>
+                <option value="en">English</option>
+                <option value="zh" selected>简体中文</option>
+                <option value="ja">日本語</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="fr">Français</option>
+              </select>
+            </div>
+            <a class="btn btn-primary" href="../guide.html">开始使用</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero hero-centered">
+          <div class="container hero-grid">
+            <div data-reveal>
+              <div class="tag">研究预览版</div>
+              <div class="eyebrow">Claude Cowork</div>
+              <h1>让对话变成真正的工作成果。</h1>
+              <p>
+                <span style="display: inline-flex; align-items: center; gap: 8px; margin-right: 6px; vertical-align: middle;">
+                  <img src="/anthropic-logo.svg" alt="Anthropic" width="20" height="20" style="display: inline-block; flex-shrink: 0; object-fit: contain;">
+                  <span style="font-weight: 600; color: #141413;">Anthropic</span>
+                </span>
+                Claude Cowork 是你的行动优先 AI 办公代理。它在安全的本地工作空间中规划、执行并交付，
+                让你从需求到成品无需交接。
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="../guide.html">开始使用</a>
+              </div>
+              <div class="hero-meta">
+                <div>需要 macOS + Claude Max</div>
+                <div>本地文件访问由你授权</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mission-control">
+          <div class="container mission-grid">
+            <div data-reveal>
+              <div class="eyebrow">实时任务指挥</div>
+              <h2>每一步运行前都清晰可见。</h2>
+              <p class="section-lead">
+                专用控制面板展示 Claude Cowork 如何规划、执行与交付，让你始终掌握进度。
+              </p>
+            </div>
+            <div class="hero-card card" data-reveal>
+              <h3>实时任务指挥</h3>
+              <div class="task-stack">
+                <div class="task">
+                  <strong>规划</strong>
+                  Claude 将目标拆解为并行子任务。
+                </div>
+                <div class="task">
+                  <strong>执行</strong>
+                  在隔离的 VM 中经你批准后执行。
+                </div>
+                <div class="task">
+                  <strong>交付</strong>
+                  完成文件直接出现在本地文件夹，随时发送。
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features">
+          <div class="container" data-reveal>
+            <h2>为真实办公场景而生</h2>
+            <p class="section-lead">
+              Claude Cowork 不只是回复，它会协同、编辑并输出团队现有格式的专业文档。
+            </p>
+            <div class="feature-grid">
+              <div class="feature-card card">
+                <h3>本地文件访问</h3>
+                <p>无需上传。Claude 读取并编辑你授权的文件夹。</p>
+              </div>
+              <div class="feature-card card">
+                <h3>子代理协作</h3>
+                <p>复杂目标拆解为并行任务，更快产出。</p>
+              </div>
+              <div class="feature-card card">
+                <h3>专业级输出</h3>
+                <p>原生支持 Excel、PowerPoint 和 Word 格式。</p>
+              </div>
+              <div class="feature-card card">
+                <h3>长时间任务</h3>
+                <p>让 Cowork 在后台持续运行，无上下文限制。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="workflow">
+          <div class="container" data-reveal>
+            <h2>工作原理</h2>
+            <p class="section-lead">
+              简单四步流程让你掌控全局，Cowork 负责重活。
+            </p>
+            <div class="steps">
+              <div class="step card">
+                <span>1</span>
+                <div>
+                  <h3>设定目标</h3>
+                  <p>用自然语言描述期望结果，就像和同事沟通。</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>2</span>
+                <div>
+                  <h3>制定计划</h3>
+                  <p>Claude 创建分步方案并在执行前确认。</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>3</span>
+                <div>
+                  <h3>安全执行</h3>
+                  <p>任务在隔离的 VM 中运行，透明可控。</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>4</span>
+                <div>
+                  <h3>接收成果</h3>
+                  <p>输出直接落入本地文件夹，随时发送。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="safety">
+          <div class="container" data-reveal>
+            <h2>安全与可控</h2>
+            <p class="section-lead">
+              Cowork 在保障敏感文件安全的同时，让你对每一步都有完全可见性。
+            </p>
+            <div class="split">
+              <div>
+                <h3>基于 VM 隔离</h3>
+                <p>
+                  每个动作都在独立虚拟机中运行，保护你的系统，并在 AI 自动化与核心环境之间建立清晰边界。
+                </p>
+                <div class="use-cases">
+                  <div class="case card">
+                    <h4>实时监控</h4>
+                    <p>随时查看动作、暂停或介入。</p>
+                  </div>
+                  <div class="case card">
+                    <h4>权限范围</h4>
+                    <p>只授予 Cowork 完成任务所需的文件夹。</p>
+                  </div>
+                </div>
+              </div>
+              <div class="security-panel card">
+                <h3>信任信号</h3>
+                <ul>
+                  <li>本地优先执行，需明确用户授权。</li>
+                  <li>自动化前提供可读计划。</li>
+                  <li>每一步都有清晰审计记录。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="use-cases">
+          <div class="container" data-reveal>
+            <h2>日常使用场景</h2>
+            <p class="section-lead">
+              从表格到调研简报，Cowork 能处理多步骤办公任务，免去手工负担。
+            </p>
+            <div class="use-cases">
+              <div class="case card">
+                <h4>财务分析</h4>
+                <p>汇总 CSV 并交付精美的报告包。</p>
+              </div>
+              <div class="case card">
+                <h4>市场调研</h4>
+                <p>收集资料、综合结论并排版成简报。</p>
+              </div>
+              <div class="case card">
+                <h4>文档整理</h4>
+                <p>重命名、分类并总结数千个文件。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq">
+          <div class="container" data-reveal>
+            <h2>常见问题</h2>
+            <div class="faq">
+              <details class="card" open>
+                <summary>需要写代码吗？</summary>
+                <p>
+                  不需要。用自然语言描述结果。Cowork 规划步骤，在安全的 VM 内执行，并将完成文件放入本地文件夹。
+                </p>
+              </details>
+              <details class="card">
+                <summary>我的文件会被上传吗？</summary>
+                <p>
+                  不会。Cowork 仅处理你授权的文件夹，并在隔离 VM 内执行操作。你可以审阅每一步并保持访问控制。
+                </p>
+              </details>
+              <details class="card">
+                <summary>它能交付哪些输出？</summary>
+                <p>
+                  团队常用的原生专业文件，包括带公式的 Excel 表、PowerPoint 演示文稿和 Word 文档。
+                </p>
+              </details>
+              <details class="card">
+                <summary>能处理长时间任务吗？</summary>
+                <p>
+                  可以。Cowork 面向长流程设计，不受会话超时限制，可完成从开始到交付的多步任务。
+                </p>
+              </details>
+              <details class="card">
+                <summary>支持哪些语言？</summary>
+                <p>
+                  支持英语（默认）、简体中文、日语、西班牙语、德语和法语，并提供手动切换器。
+                </p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer>
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <p class="footer-title">探索</p>
+              <div class="footer-links">
+                <a href="../privacy.html">隐私政策</a>
+                <a href="../terms.html">服务条款</a>
+              </div>
+            </div>
+            <div>
+              <p class="footer-title">参考案例</p>
+              <div class="footer-links">
+                <a href="https://viecom.pro" target="_blank" rel="noopener">AI Ecommerce</a>
+                <a href="https://futurai.org" target="_blank" rel="noopener">AI Education</a>
+              </div>
+            </div>
+          </div>
+          <p data-disclaimer>
+            本项目（Claude Cowork 落地页）是一个基于学习和研究兴趣创建的独立项目，并非由 Anthropic (Claude) 公司赞助、认可或以任何形式关联。
+            本页面所展示的产品信息仅基于公开资料进行整理和推测，不代表 Anthropic 官方立场。用户在使用 Claude Cowork 产品时，
+            应以 Anthropic 官方发布的信息和条款为准。
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const revealItems = document.querySelectorAll("[data-reveal]");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      revealItems.forEach((item) => observer.observe(item));
+
+      const LOCALE_KEY = "coworkLocale";
+      const localeSelect = document.querySelector("[data-locale-select]");
+      const localePages = {
+        en: "../en/",
+        zh: "../zh/",
+        ja: "../ja/",
+        es: "../es/",
+        de: "../de/",
+        fr: "../fr/"
+      };
+
+      const normalizeLocale = (value) => {
+        if (!value) {
+          return "en";
+        }
+        const lower = value.toLowerCase();
+        if (lower.startsWith("zh")) {
+          return "zh";
+        }
+        if (lower.startsWith("ja")) {
+          return "ja";
+        }
+        if (lower.startsWith("es")) {
+          return "es";
+        }
+        if (lower.startsWith("de")) {
+          return "de";
+        }
+        if (lower.startsWith("fr")) {
+          return "fr";
+        }
+        return "en";
+      };
+
+      const pageLocale = normalizeLocale(
+        document.documentElement.lang || (localeSelect && localeSelect.value)
+      );
+      window.localStorage.setItem(LOCALE_KEY, pageLocale);
+      if (localeSelect) {
+        localeSelect.value = pageLocale;
+      }
+
+      if (localeSelect) {
+        localeSelect.addEventListener("change", (event) => {
+          const selected = normalizeLocale(event.target.value);
+          window.localStorage.setItem(LOCALE_KEY, selected);
+          const target = localePages[selected] || localePages.en;
+          if (target) {
+            window.location.href = target;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
