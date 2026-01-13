@@ -5,3 +5,5 @@
 /terms /en/terms.html 301
 /terms/ /en/terms.html 301
 
+https://www.cowork.mobi/* https://cowork.mobi/:splat 301!
+

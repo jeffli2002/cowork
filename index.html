@@ -11,6 +11,7 @@
       gtag('config', 'G-Z0QTZW9GYX');
     </script>
     <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; url=/en/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cowork | Language selection</title>
     <meta
@@ -25,6 +26,11 @@
     <link rel="alternate" hreflang="de" href="/de/" />
     <link rel="alternate" hreflang="fr" href="/fr/" />
     <link rel="alternate" hreflang="x-default" href="/" />
+    <script>
+      if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+        window.location.replace(`/en/${window.location.search}${window.location.hash}`);
+      }
+    </script>
     <style>
       :root {
         --ink: #141413;
