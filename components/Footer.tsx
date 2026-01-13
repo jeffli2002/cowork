@@ -38,21 +38,37 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ locale }) => {
   const disclaimer = DISCLAIMER_BY_LOCALE[locale] || DISCLAIMER_BY_LOCALE.en;
+  
+  // Get base path based on locale
+  const getBasePath = () => {
+    const localePaths: Record<Locale, string> = {
+      en: '/en/',
+      zh: '/zh/',
+      ja: '/ja/',
+      es: '/es/',
+      de: '/de/',
+      fr: '/fr/'
+    };
+    return localePaths[locale] || '/en/';
+  };
+  
+  const basePath = getBasePath();
+  
   return (
-    <footer className="w-full bg-white border-t border-slate-200 mt-auto fixed bottom-0 left-0 right-0 md:left-68 z-40">
+    <footer className="w-full bg-white border-t border-slate-200 mt-auto fixed bottom-0 left-0 right-0 md:left-[272px] z-40">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
           <div>
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Explore</p>
             <div className="flex flex-wrap gap-4">
               <a 
-                href="privacy.html" 
+                href={`${basePath}privacy.html`}
                 className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
               >
                 Privacy Policy
               </a>
               <a 
-                href="terms.html" 
+                href={`${basePath}terms.html`}
                 className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
               >
                 Terms of Service

@@ -20,6 +20,21 @@ const Header: React.FC<HeaderProps> = ({
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  
+  // Get base path based on locale
+  const getBasePath = () => {
+    const localePaths: Record<string, string> = {
+      en: '/en/',
+      zh: '/zh/',
+      ja: '/ja/',
+      es: '/es/',
+      de: '/de/',
+      fr: '/fr/'
+    };
+    return localePaths[locale] || '/en/';
+  };
+  
+  const basePath = getBasePath();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -53,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({
 
         {/* Brand/Logo - Same as Sidebar */}
         <a 
-          href="index.html" 
+          href={`${basePath}`}
           className="flex items-center gap-3 hover:opacity-80 transition-opacity"
         >
           <div className="w-9 h-9 bg-[#D97757] rounded-xl flex items-center justify-center text-white shadow-sm">
@@ -67,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({
         {/* Navigation Links - Desktop */}
         <nav className="hidden lg:flex items-center gap-5" aria-label="Primary">
           <a 
-            href="index.html#features" 
+            href={`${basePath}#features`}
             className="text-sm text-slate-700 hover:text-slate-900 uppercase tracking-wide relative transition-colors"
             style={{ fontSize: '14px', letterSpacing: '0.02em' }}
           >
@@ -75,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({
             <span className="absolute left-0 bottom-[-6px] w-0 h-0.5 bg-[#D97757] transition-all duration-300 hover:w-full"></span>
           </a>
           <a 
-            href="index.html#workflow" 
+            href={`${basePath}#workflow`}
             className="text-sm text-slate-700 hover:text-slate-900 uppercase tracking-wide relative transition-colors"
             style={{ fontSize: '14px', letterSpacing: '0.02em' }}
           >
@@ -83,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({
             <span className="absolute left-0 bottom-[-6px] w-0 h-0.5 bg-[#D97757] transition-all duration-300 hover:w-full"></span>
           </a>
           <a 
-            href="index.html#safety" 
+            href={`${basePath}#safety`}
             className="text-sm text-slate-700 hover:text-slate-900 uppercase tracking-wide relative transition-colors"
             style={{ fontSize: '14px', letterSpacing: '0.02em' }}
           >
@@ -91,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({
             <span className="absolute left-0 bottom-[-6px] w-0 h-0.5 bg-[#D97757] transition-all duration-300 hover:w-full"></span>
           </a>
           <a 
-            href="guide.html" 
+            href={`${basePath}guide.html`}
             className="text-sm text-slate-900 font-semibold uppercase tracking-wide relative transition-colors"
             style={{ fontSize: '14px', letterSpacing: '0.02em' }}
           >
@@ -99,7 +114,7 @@ const Header: React.FC<HeaderProps> = ({
             <span className="absolute left-0 bottom-[-6px] w-full h-0.5 bg-[#D97757]"></span>
           </a>
           <a 
-            href="index.html#faq" 
+            href={`${basePath}#faq`}
             className="text-sm text-slate-700 hover:text-slate-900 uppercase tracking-wide relative transition-colors"
             style={{ fontSize: '14px', letterSpacing: '0.02em' }}
           >
@@ -158,7 +173,7 @@ const Header: React.FC<HeaderProps> = ({
 
           {/* Get Started Button */}
           <a 
-            href="index.html" 
+            href={`${basePath}`}
             className="hidden md:flex items-center px-5 py-2 rounded-full bg-slate-900 text-white text-sm font-medium uppercase tracking-wide hover:bg-slate-800 transition-colors shadow-sm"
             style={{ fontFamily: '"Poppins", Arial, sans-serif', letterSpacing: '0.04em' }}
           >
