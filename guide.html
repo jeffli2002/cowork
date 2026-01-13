@@ -62,8 +62,30 @@
     </style>
 </head>
 <body>
-    <div id="root">
-        <main class="max-w-5xl mx-auto px-6 py-12">
+    <div id="root" class="min-h-screen flex flex-col">
+    <header class="sticky top-0 z-20 bg-[#fcfcf9]/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-3 font-semibold uppercase tracking-[0.2em] text-slate-900">
+                <span class="w-9 h-9 bg-[#D97757] rounded-xl flex items-center justify-center text-white shadow-sm">
+                    <i class="fas fa-users-cog"></i>
+                </span>
+                Cowork
+            </a>
+            <nav class="flex flex-wrap items-center gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500" aria-label="Primary">
+                <a class="hover:text-[#D97757] transition-colors" href="index.html#features">Features</a>
+                <a class="hover:text-[#D97757] transition-colors" href="index.html#workflow">How it works</a>
+                <a class="hover:text-[#D97757] transition-colors" href="index.html#safety">Safety</a>
+                <a class="text-[#D97757]" href="guide.html">Guide</a>
+                <a class="hover:text-[#D97757] transition-colors" href="index.html#faq">FAQ</a>
+            </nav>
+            <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em]">
+                <a class="inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-slate-600 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="privacy.html">Privacy</a>
+                <a class="inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-slate-600 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="terms.html">Terms</a>
+                <a class="inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800 transition-colors" href="index.html">Get Started</a>
+            </div>
+        </div>
+    </header>
+        <main class="max-w-5xl mx-auto px-6 py-12 flex-1">
             <header class="mb-10">
                 <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Guide</p>
                 <h1 class="text-4xl md:text-5xl font-black text-slate-900">Claude Cowork Guide</h1>
@@ -227,6 +249,29 @@
                 </ul>
             </section>
         </main>
+    <footer class="border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 py-10 text-sm text-slate-600">
+            <div class="grid gap-8 md:grid-cols-2">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Explore</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="hover:text-[#D97757] transition-colors" href="privacy.html">Privacy Policy</a>
+                        <a class="hover:text-[#D97757] transition-colors" href="terms.html">Terms of Service</a>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Ref cases</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="hover:text-[#D97757] transition-colors" href="https://viecom.pro" target="_blank" rel="noopener">AI Ecommerce</a>
+                        <a class="hover:text-[#D97757] transition-colors" href="https://futurai.org" target="_blank" rel="noopener">AI Education</a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 leading-relaxed mt-8 border-t border-slate-100 pt-6">
+                This project (the Claude Cowork landing page) is an independent project created for learning and research and is not sponsored, endorsed, or affiliated with Anthropic (Claude) in any way. The product information shown on this page is compiled and inferred from public sources and does not represent Anthropic's official position. For actual use of Claude Cowork, please rely on information and terms published by Anthropic.
+            </p>
+        </div>
+    </footer>
     </div>
 <script type="module" src="/index.tsx"></script>
 </body>
