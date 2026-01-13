@@ -62,7 +62,172 @@
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <main class="max-w-5xl mx-auto px-6 py-12">
+            <header class="mb-10">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Guide</p>
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900">Claude Cowork Guide</h1>
+                <p class="mt-4 text-slate-600 max-w-2xl">
+                    This static guide is a readable fallback when the interactive app is not built.
+                    To enable search and navigation, deploy the Vite build output for this project.
+                </p>
+                <div class="mt-6 flex flex-wrap gap-3 text-sm">
+                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="index.html">Back to homepage</a>
+                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="privacy.html">Privacy Policy</a>
+                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="terms.html">Terms of Service</a>
+                </div>
+            </header>
+
+            <nav class="bg-slate-50 border border-slate-200 rounded-2xl p-6 mb-10">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Sections</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-sm">
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#introduction">Introduction</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#installation">Installation</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#authentication">Authentication &amp; Security</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#basic-usage">Basic Usage</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#advanced-features">Advanced Features</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#troubleshooting">Troubleshooting</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#resources">Video Resources</a>
+                </div>
+            </nav>
+
+            <section id="introduction" class="prose prose-slate max-w-none mb-12">
+                <h2>Introduction to Claude Cowork</h2>
+                <p>
+                    Claude Cowork is Anthropic's first agentic AI product designed for non-technical office tasks.
+                    It transforms Claude from a conversational assistant into an action-first office agent that can
+                    plan, execute, and deliver work inside a secure local environment.
+                </p>
+                <h3>Key benefits</h3>
+                <ul>
+                    <li><strong>No coding required</strong>: Describe outcomes in plain language.</li>
+                    <li><strong>Local file access</strong>: Works directly with your authorized folders.</li>
+                    <li><strong>Professional output</strong>: Generates Excel, PowerPoint, and Word documents.</li>
+                    <li><strong>Long-running tasks</strong>: Handles extended workflows without timeouts.</li>
+                </ul>
+                <h3>Who can use it?</h3>
+                <ul>
+                    <li>macOS users with Claude Desktop.</li>
+                    <li>Claude Max subscribers.</li>
+                </ul>
+            </section>
+
+            <section id="installation" class="prose prose-slate max-w-none mb-12">
+                <h2>Installation Guide</h2>
+                <h3>Prerequisites</h3>
+                <ol>
+                    <li>macOS (Research Preview requirement).</li>
+                    <li>Claude Desktop installed.</li>
+                    <li>Active Claude Max subscription.</li>
+                </ol>
+                <h3>Step-by-step installation</h3>
+                <ol>
+                    <li>Install Claude Desktop from <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a>.</li>
+                    <li>Upgrade to Claude Max in Settings → Subscription.</li>
+                    <li>Enable Cowork in Settings → Features → Cowork.</li>
+                    <li>Grant folder access when prompted.</li>
+                </ol>
+                <h3>Verify installation</h3>
+                <p>Start a new conversation in Claude Desktop and look for the Cowork icon.</p>
+            </section>
+
+            <section id="authentication" class="prose prose-slate max-w-none mb-12">
+                <h2>Authentication &amp; Security</h2>
+                <p>
+                    Cowork uses your Claude Desktop authentication tied to your Anthropic account and Claude Max subscription.
+                </p>
+                <h3>Security model</h3>
+                <ul>
+                    <li><strong>VM isolation</strong>: Work runs inside a dedicated virtual machine.</li>
+                    <li><strong>User control</strong>: You review and approve every step.</li>
+                    <li><strong>Scoped access</strong>: Grant only the folders needed for a task.</li>
+                </ul>
+                <h3>Best practices</h3>
+                <ul>
+                    <li>Start with a single folder and expand access only as needed.</li>
+                    <li>Review permissions periodically.</li>
+                    <li>Revoke access for folders you no longer use.</li>
+                </ul>
+            </section>
+
+            <section id="basic-usage" class="prose prose-slate max-w-none mb-12">
+                <h2>Basic Usage</h2>
+                <h3>Workflow</h3>
+                <ol>
+                    <li>Describe your goal in plain language.</li>
+                    <li>Review the plan and adjust if needed.</li>
+                    <li>Approve execution inside the secure VM.</li>
+                    <li>Receive results in your authorized folders.</li>
+                </ol>
+                <h3>Example commands</h3>
+                <pre><code>"Create a summary document of all PDF files in my Research folder"</code></pre>
+                <pre><code>"Create a PowerPoint presentation summarizing my Q4 sales data"</code></pre>
+                <pre><code>"Analyze all CSV files in my Data folder and create a summary report"</code></pre>
+            </section>
+
+            <section id="advanced-features" class="prose prose-slate max-w-none mb-12">
+                <h2>Advanced Features</h2>
+                <h3>Sub-agent collaboration</h3>
+                <p>
+                    Cowork can split complex goals into parallel sub-tasks, with multiple agents working simultaneously.
+                </p>
+                <pre><code>"Research the top 5 competitors in the AI space and create a comparison report"</code></pre>
+                <h3>Professional format support</h3>
+                <ul>
+                    <li>Excel spreadsheets with formulas and charts.</li>
+                    <li>PowerPoint presentations with templates and layouts.</li>
+                    <li>Word documents with consistent formatting.</li>
+                </ul>
+                <h3>Long-running tasks</h3>
+                <ul>
+                    <li>No session timeouts for extended workflows.</li>
+                    <li>Progress tracking and resume support.</li>
+                    <li>Background execution while you keep working.</li>
+                </ul>
+                <h3>Custom workflows</h3>
+                <ol>
+                    <li>Define a workflow template.</li>
+                    <li>Save it for reuse.</li>
+                    <li>Apply it with new inputs.</li>
+                </ol>
+            </section>
+
+            <section id="troubleshooting" class="prose prose-slate max-w-none mb-12">
+                <h2>Troubleshooting</h2>
+                <h3>Cowork feature not appearing</h3>
+                <ul>
+                    <li>Verify your Claude Max subscription.</li>
+                    <li>Update Claude Desktop to the latest version.</li>
+                    <li>Restart Claude Desktop and confirm Cowork is enabled.</li>
+                </ul>
+                <h3>Permission denied errors</h3>
+                <ul>
+                    <li>Check macOS System Preferences → Security &amp; Privacy → Files and Folders.</li>
+                    <li>Re-authorize folder access in Claude Desktop settings.</li>
+                </ul>
+                <h3>Performance issues</h3>
+                <ul>
+                    <li>Large file operations take time.</li>
+                    <li>Break complex tasks into smaller steps.</li>
+                    <li>Ensure stable internet connectivity.</li>
+                </ul>
+                <h3>Getting help</h3>
+                <ol>
+                    <li>Read <a href="https://claude.ai/docs" target="_blank" rel="noopener">official documentation</a>.</li>
+                    <li>Visit the <a href="https://community.anthropic.com" target="_blank" rel="noopener">community forum</a>.</li>
+                    <li>Contact Anthropic support if issues persist.</li>
+                </ol>
+            </section>
+
+            <section id="resources" class="prose prose-slate max-w-none">
+                <h2>Video Resources</h2>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=UAmKyyZ-b9E" target="_blank" rel="noopener">Claude Cowork Official Introduction</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=KLzcqt9fIus" target="_blank" rel="noopener">Claude Cowork User Test Experience &amp; Feedback</a></li>
+                </ul>
+            </section>
+        </main>
+    </div>
 <script type="module" src="/index.tsx"></script>
 </body>
 </html>
