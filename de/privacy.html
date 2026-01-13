@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0QTZW9GYX"></script>
@@ -17,7 +17,7 @@
       name="description"
       content="Privacy policy for the Cowork conceptual landing page, outlining what data is and is not collected."
     />
-    <link rel="canonical" href="/en/privacy.html" />
+    <link rel="canonical" href="/de/privacy.html" />
     <link rel="alternate" hreflang="en" href="/en/privacy.html" />
     <link rel="alternate" hreflang="zh" href="/zh/privacy.html" />
     <link rel="alternate" hreflang="ja" href="/ja/privacy.html" />
@@ -378,31 +378,31 @@
     <div class="page">
       <header>
         <div class="container nav">
-          <a href="/en/" class="brand">
+          <a href="index.html" class="brand">
             <span class="brand-mark" aria-hidden="true" title="Cowork">
               <i class="fas fa-users-cog"></i>
             </span>
             Cowork
           </a>
           <nav class="nav-links" aria-label="Primary">
-            <a href="/en/#features">Features</a>
-            <a href="/en/#workflow">How it works</a>
-            <a href="/en/#safety">Safety</a>
-            <a href="/en/guide.html">Guide</a>
-            <a href="/en/#faq">FAQ</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#workflow">How it works</a>
+            <a href="index.html#safety">Safety</a>
+            <a href="guide.html">Guide</a>
+            <a href="index.html#faq">FAQ</a>
           </nav>
           <div class="nav-cta">
             <div class="lang-dropdown">
               <select aria-label="Language" data-locale-select>
-                <option value="en" selected>English</option>
+                <option value="en">English</option>
                 <option value="zh">简体中文</option>
                 <option value="ja">日本語</option>
                 <option value="es">Español</option>
-                <option value="de">Deutsch</option>
+                <option value="de" selected>Deutsch</option>
                 <option value="fr">Français</option>
               </select>
             </div>
-            <a class="btn btn-primary" href="/en/guide.html">Get Started</a>
+            <a class="btn btn-primary" href="guide.html">Get Started</a>
           </div>
         </div>
       </header>
@@ -507,8 +507,8 @@
             <div>
               <p class="footer-title">Explore</p>
               <div class="footer-links">
-                <a href="/en/privacy.html">Privacy Policy</a>
-                <a href="/en/terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
               </div>
             </div>
             <div>
@@ -624,8 +624,8 @@
 
       if (localeSelect) {
         localeSelect.addEventListener("change", (event) => {
-          const selected = normalizeLocale(event.target.value);
-          window.localStorage.setItem(LOCALE_KEY, selected);
+          const = normalizeLocale(event.target.value);
+          window.localStorage.setItem(LOCALE_KEY,);
           const target = localePages[selected] || localePages.en;
           if (target) {
             window.location.href = target;

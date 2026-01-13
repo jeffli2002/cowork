@@ -1,8 +1,7 @@
-/ /en/ 301
-/guide /guide.html 200
-/guide/ /guide.html 200
-/privacy /privacy.html 200
-/privacy/ /privacy.html 200
-/terms /terms.html 200
-/terms/ /terms.html 200
+/guide /en/guide.html 301
+/guide/ /en/guide.html 301
+/privacy /en/privacy.html 301
+/privacy/ /en/privacy.html 301
+/terms /en/terms.html 301
+/terms/ /en/terms.html 301
 

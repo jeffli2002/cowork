@@ -1,43 +1,350 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0QTZW9GYX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'G-Z0QTZW9GYX');
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=/en/" />
-    <link rel="canonical" href="/en/" />
+    <title>Cowork | Language selection</title>
+    <meta
+      name="description"
+      content="Choose a language to view the Cowork landing page."
+    />
+    <link rel="canonical" href="/" />
     <link rel="alternate" hreflang="en" href="/en/" />
     <link rel="alternate" hreflang="zh" href="/zh/" />
     <link rel="alternate" hreflang="ja" href="/ja/" />
     <link rel="alternate" hreflang="es" href="/es/" />
     <link rel="alternate" hreflang="de" href="/de/" />
     <link rel="alternate" hreflang="fr" href="/fr/" />
-    <link rel="alternate" hreflang="x-default" href="/en/" />
-    <script>
-      // Immediate redirect - check for stored locale preference
-      (function() {
-        const LOCALE_KEY = "coworkLocale";
-        const storedLocale = window.localStorage.getItem(LOCALE_KEY);
-        
-        const localeDirs = {
-          en: "/en/",
-          zh: "/zh/",
-          ja: "/ja/",
-          es: "/es/",
-          de: "/de/",
-          fr: "/fr/"
-        };
-        
-        // Redirect to stored locale or default to /en/
-        const target = storedLocale && localeDirs[storedLocale] 
-          ? localeDirs[storedLocale] 
-          : "/en/";
-        
-        window.location.replace(target);
-      })();
-    </script>
+    <link rel="alternate" hreflang="x-default" href="/" />
+    <style>
+      :root {
+        --ink: #141413;
+        --paper: #faf9f5;
+        --stone: #e8e6dc;
+        --ash: #b0aea5;
+        --accent-1: #d97757;
+        --accent-2: #6a9bcc;
+        --accent-3: #788c5d;
+        --shadow: 0 24px 60px rgba(20, 20, 19, 0.16);
+        --radius-lg: 28px;
+        --radius-md: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Lora", Georgia, serif;
+        color: var(--ink);
+        background:
+          radial-gradient(1200px 600px at 10% -20%, rgba(217, 119, 87, 0.16), transparent 60%),
+          radial-gradient(900px 500px at 90% 0%, rgba(106, 155, 204, 0.15), transparent 65%),
+          radial-gradient(800px 700px at 50% 100%, rgba(120, 140, 93, 0.14), transparent 60%),
+          linear-gradient(180deg, #faf9f5 0%, #f2efe6 60%, #faf9f5 100%);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+            90deg,
+            rgba(20, 20, 19, 0.02) 0,
+            rgba(20, 20, 19, 0.02) 1px,
+            transparent 1px,
+            transparent 6px
+          ),
+          repeating-linear-gradient(
+            0deg,
+            rgba(20, 20, 19, 0.02) 0,
+            rgba(20, 20, 19, 0.02) 1px,
+            transparent 1px,
+            transparent 6px
+          );
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        position: relative;
+        z-index: 1;
+      }
+
+      .container {
+        width: min(1100px, 92vw);
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 24px 0;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 18px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: var(--accent-1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+        box-shadow: 0 14px 30px rgba(217, 119, 87, 0.25);
+      }
+
+      .hero {
+        padding: 64px 0 32px;
+        display: grid;
+        gap: 32px;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.36em;
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 11px;
+        color: var(--ash);
+      }
+
+      h1 {
+        font-size: clamp(32px, 4vw, 56px);
+        margin: 12px 0 12px;
+      }
+
+      .lead {
+        max-width: 640px;
+        line-height: 1.7;
+        font-size: 18px;
+        color: rgba(20, 20, 19, 0.82);
+      }
+
+      .language-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 18px;
+        margin-top: 16px;
+      }
+
+      .language-card {
+        background: rgba(250, 249, 245, 0.92);
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(20, 20, 19, 0.08);
+        padding: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .language-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(217, 119, 87, 0.4);
+        box-shadow: var(--shadow);
+      }
+
+      .language-name {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .language-name span:first-child {
+        font-size: 18px;
+      }
+
+      .language-name span:last-child {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--ash);
+      }
+
+      .language-badge {
+        font-family: "Poppins", Arial, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent-1);
+      }
+
+      .language-card.is-selected {
+        border-color: rgba(106, 155, 204, 0.45);
+        box-shadow: 0 18px 40px rgba(106, 155, 204, 0.2);
+      }
+
+      .hint {
+        margin-top: 24px;
+        font-size: 14px;
+        color: rgba(20, 20, 19, 0.6);
+      }
+
+      @media (max-width: 640px) {
+        header {
+          padding: 18px 0;
+        }
+
+        .brand {
+          font-size: 16px;
+          letter-spacing: 0.18em;
+        }
+
+        .brand-mark {
+          width: 36px;
+          height: 36px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <p>Redirecting to <a href="/en/">English version</a>...</p>
+    <div class="page">
+      <header>
+        <div class="container">
+          <span class="brand">
+            <span class="brand-mark">C</span>
+            COWORK
+          </span>
+        </div>
+      </header>
+
+      <main class="container">
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Locale Directory</p>
+            <h1>Select your language</h1>
+            <p class="lead">
+              Cowork is available in multiple languages. Choose a locale to open the
+              corresponding homepage and guide. Your preference is stored locally so
+              the next visit starts in the same language.
+            </p>
+          </div>
+          <div class="language-grid">
+            <a class="language-card" href="/en/" data-locale-link="en">
+              <div class="language-name">
+                <span>English</span>
+                <span>English</span>
+              </div>
+              <span class="language-badge">EN</span>
+            </a>
+            <a class="language-card" href="/zh/" data-locale-link="zh">
+              <div class="language-name">
+                <span>简体中文</span>
+                <span>Simplified Chinese</span>
+              </div>
+              <span class="language-badge">ZH</span>
+            </a>
+            <a class="language-card" href="/ja/" data-locale-link="ja">
+              <div class="language-name">
+                <span>日本語</span>
+                <span>Japanese</span>
+              </div>
+              <span class="language-badge">JA</span>
+            </a>
+            <a class="language-card" href="/es/" data-locale-link="es">
+              <div class="language-name">
+                <span>Español</span>
+                <span>Spanish</span>
+              </div>
+              <span class="language-badge">ES</span>
+            </a>
+            <a class="language-card" href="/de/" data-locale-link="de">
+              <div class="language-name">
+                <span>Deutsch</span>
+                <span>German</span>
+              </div>
+              <span class="language-badge">DE</span>
+            </a>
+            <a class="language-card" href="/fr/" data-locale-link="fr">
+              <div class="language-name">
+                <span>Français</span>
+                <span>French</span>
+              </div>
+              <span class="language-badge">FR</span>
+            </a>
+          </div>
+          <p class="hint">
+            Looking for the legal pages? They live under each locale, such as
+            <a href="/en/privacy.html">/en/privacy.html</a>.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const LOCALE_KEY = "coworkLocale";
+      const localeLinks = document.querySelectorAll("[data-locale-link]");
+
+      const normalizeLocale = (value) => {
+        if (!value) {
+          return "en";
+        }
+        const lower = value.toLowerCase();
+        if (lower.startsWith("zh")) {
+          return "zh";
+        }
+        if (lower.startsWith("ja")) {
+          return "ja";
+        }
+        if (lower.startsWith("es")) {
+          return "es";
+        }
+        if (lower.startsWith("de")) {
+          return "de";
+        }
+        if (lower.startsWith("fr")) {
+          return "fr";
+        }
+        return "en";
+      };
+
+      const storedLocale = normalizeLocale(
+        window.localStorage.getItem(LOCALE_KEY) || navigator.language
+      );
+      const storedCard = document.querySelector(
+        `[data-locale-link="${storedLocale}"]`
+      );
+      if (storedCard) {
+        storedCard.classList.add("is-selected");
+      }
+
+      localeLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          const locale = link.getAttribute("data-locale-link");
+          if (locale) {
+            window.localStorage.setItem(LOCALE_KEY, locale);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
