@@ -18,6 +18,22 @@ const SECTIONS_CONFIG: Record<SectionKey, { title: string; icon: string }> = {
 
 const LOCALE_KEY = 'coworkLocale';
 const SUPPORTED_LOCALES: Locale[] = ['en', 'zh', 'ja', 'es', 'de', 'fr'];
+const LOCALE_PREFIXES: Record<Locale, string> = {
+  en: '/en/',
+  zh: '/zh/',
+  ja: '/ja/',
+  es: '/es/',
+  de: '/de/',
+  fr: '/fr/'
+};
+const LOCALE_GUIDE_PATHS: Record<Locale, string> = {
+  en: '/en/guide.html',
+  zh: '/zh/guide.html',
+  ja: '/ja/guide.html',
+  es: '/es/guide.html',
+  de: '/de/guide.html',
+  fr: '/fr/guide.html'
+};
 
 const normalizeLocale = (value: string | null | undefined): Locale => {
   if (!value) {
@@ -42,9 +58,24 @@ const normalizeLocale = (value: string | null | undefined): Locale => {
   return 'en';
 };
 
+const getLocaleFromPath = (): Locale | null => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+  const path = window.location.pathname;
+  const matched = (Object.keys(LOCALE_PREFIXES) as Locale[]).find((locale) =>
+    path.startsWith(LOCALE_PREFIXES[locale])
+  );
+  return matched || null;
+};
+
 const getInitialLocale = (): Locale => {
   if (typeof window === 'undefined') {
     return 'en';
+  }
+  const pathLocale = getLocaleFromPath();
+  if (pathLocale) {
+    return pathLocale;
   }
   const stored = window.localStorage.getItem(LOCALE_KEY);
   if (stored && SUPPORTED_LOCALES.includes(stored as Locale)) {
@@ -100,6 +131,19 @@ const App: React.FC = () => {
     window.localStorage.setItem(LOCALE_KEY, locale);
     document.documentElement.lang = locale;
   }, [locale]);
+
+  const handleLocaleChange = (nextLocale: Locale) => {
+    setLocale(nextLocale);
+    if (typeof window === 'undefined') {
+      return;
+    }
+    if (window.location.pathname.endsWith('guide.html')) {
+      const target = LOCALE_GUIDE_PATHS[nextLocale];
+      if (target && window.location.pathname !== target) {
+        window.location.href = target;
+      }
+    }
+  };
 
   const handleSearch = async (query: string) => {
     setSearchQuery(query);
@@ -161,7 +205,7 @@ const App: React.FC = () => {
         onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         isMobileMenuOpen={isMobileMenuOpen}
         locale={locale}
-        onLocaleChange={setLocale}
+        onLocaleChange={handleLocaleChange}
       />
 
       <div className="flex-1 flex flex-col min-w-0 md:ml-68 pt-16">
