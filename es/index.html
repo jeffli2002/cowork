@@ -701,7 +701,17 @@
               <h1>Convierte la conversación en trabajo real.</h1>
               <p>
                 <span style="display: inline-flex; align-items: center; gap: 8px; margin-right: 6px; vertical-align: middle;">
-                  <img src="/anthropic-logo.svg" alt="Anthropic" width="20" height="20" style="display: inline-block; flex-shrink: 0; object-fit: contain;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; flex-shrink: 0; vertical-align: middle;">
+                    <circle cx="12" cy="12" r="2.5" fill="#D97757"/>
+                    <ellipse cx="12" cy="5" rx="1.5" ry="3.5" fill="#D97757"/>
+                    <ellipse cx="12" cy="19" rx="1.5" ry="3.5" fill="#D97757"/>
+                    <ellipse cx="5" cy="12" rx="3.5" ry="1.5" fill="#D97757"/>
+                    <ellipse cx="19" cy="12" rx="3.5" ry="1.5" fill="#D97757"/>
+                    <ellipse cx="7.07" cy="7.07" rx="1.5" ry="3.5" fill="#D97757" transform="rotate(-45 7.07 7.07)"/>
+                    <ellipse cx="16.93" cy="16.93" rx="1.5" ry="3.5" fill="#D97757" transform="rotate(-45 16.93 16.93)"/>
+                    <ellipse cx="16.93" cy="7.07" rx="1.5" ry="3.5" fill="#D97757" transform="rotate(45 16.93 7.07)"/>
+                    <ellipse cx="7.07" cy="16.93" rx="1.5" ry="3.5" fill="#D97757" transform="rotate(45 7.07 16.93)"/>
+                  </svg>
                   <span style="font-weight: 600; color: #141413;">Anthropic</span>
                 </span>
                 Claude Cowork es tu agente de oficina de IA orientado a la acción. Planifica,
@@ -969,12 +979,12 @@
       const LOCALE_KEY = "coworkLocale";
       const localeSelect = document.querySelector("[data-locale-select]");
       const localePages = {
-        en: "../en/",
-        zh: "../zh/",
-        ja: "../ja/",
-        es: "../es/",
-        de: "../de/",
-        fr: "../fr/"
+        en: "/en/",
+        zh: "/zh/",
+        ja: "/ja/",
+        es: "/es/",
+        de: "/de/",
+        fr: "/fr/"
       };
 
       const normalizeLocale = (value) => {

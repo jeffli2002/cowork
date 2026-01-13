@@ -31,6 +31,7 @@ export default defineConfig(({ mode }) => {
             terms: path.resolve(__dirname, 'terms.html')
           }
         }
-      }
+      },
+      publicDir: 'public'
     };
 });
