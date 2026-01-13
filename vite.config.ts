@@ -29,7 +29,14 @@ export default defineConfig(({ mode }) => {
             index: path.resolve(__dirname, 'index.html'),
             guide: path.resolve(__dirname, 'guide.html'),
             privacy: path.resolve(__dirname, 'privacy.html'),
-            terms: path.resolve(__dirname, 'terms.html')
+            terms: path.resolve(__dirname, 'terms.html'),
+            // Language-specific guide pages
+            'en/guide': path.resolve(__dirname, 'en/guide.html'),
+            'zh/guide': path.resolve(__dirname, 'zh/guide.html'),
+            'ja/guide': path.resolve(__dirname, 'ja/guide.html'),
+            'es/guide': path.resolve(__dirname, 'es/guide.html'),
+            'de/guide': path.resolve(__dirname, 'de/guide.html'),
+            'fr/guide': path.resolve(__dirname, 'fr/guide.html')
           }
         }
       },
