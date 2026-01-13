@@ -1,3 +1,6 @@
+/sitemap.xml /sitemap.xml 200
+/sitemap.xmls /sitemap.xmls 200
+/robots.txt /robots.txt 200
 /guide /en/guide.html 301
 /guide/ /en/guide.html 301
 /en/guide /en/guide.html 200
@@ -18,4 +21,3 @@
 /terms/ /en/terms.html 301
 
 https://www.cowork.mobi/* https://cowork.mobi/:splat 301!
-
