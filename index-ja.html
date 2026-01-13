@@ -1001,7 +1001,7 @@
       const storedLocaleRaw = window.localStorage.getItem(LOCALE_KEY);
       const storedLocale = storedLocaleRaw ? normalizeLocale(storedLocaleRaw) : null;
 
-      if (storedLocale && storedLocale !== pageLocale && localePages[storedLocale]) {
+      if (storedLocale && storedLocale !== pageLocale && pageLocale === "en" && localePages[storedLocale]) {
         window.location.href = localePages[storedLocale];
       } else {
         window.localStorage.setItem(LOCALE_KEY, pageLocale);

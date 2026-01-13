@@ -6,7 +6,7 @@
     <title>claude cowork | Action-first AI for work</title>
     <meta
       name="description"
-      content="claude cowork is an action-first AI office agent that plans, executes, and delivers real work inside a secure local environment."
+      content="claude cowork is an action-first AI office agent that plans, executes, and delivers real work inside a secure local environment. Learn how claude cowork keeps work local, safe, and fast."
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -698,7 +698,7 @@
             <div data-reveal>
               <div class="tag">Research Preview</div>
               <div class="eyebrow">claude cowork</div>
-              <h1>Turn conversation into real work.</h1>
+              <h1>claude cowork turns conversation into real work.</h1>
               <p>
                 <span style="display: inline-flex; align-items: center; gap: 8px; margin-right: 6px; vertical-align: middle;">
                   <img src="/anthropic-logo.svg" alt="Anthropic" width="20" height="20" style="display: inline-block; flex-shrink: 0; object-fit: contain;">
@@ -706,7 +706,8 @@
                 </span>
                 claude cowork is your action-first AI office agent. It plans, executes,
                 and delivers inside a secure local workspace so you move from request to
-                finished artifacts without handoffs.
+                finished artifacts without handoffs. claude cowork keeps the work local
+                and visible end-to-end.
               </p>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="guide.html">Get Started</a>
@@ -751,7 +752,7 @@
 
         <section id="features">
           <div class="container" data-reveal>
-            <h2>Designed for real office work</h2>
+            <h2>claude cowork for real office work</h2>
             <p class="section-lead">
               claude cowork does not just respond. It coordinates, edits, and outputs
               professional documents in the formats your team already uses.
@@ -821,7 +822,7 @@
           <div class="container" data-reveal>
             <h2>Safety and control</h2>
             <p class="section-lead">
-              Cowork is designed to keep sensitive files safe while giving you full
+              claude cowork is designed to keep sensitive files safe while giving you full
               visibility into every step.
             </p>
             <div class="split">
@@ -859,7 +860,7 @@
           <div class="container" data-reveal>
             <h2>Everyday use cases</h2>
             <p class="section-lead">
-              From spreadsheets to research briefs, Cowork handles multi-step office
+              From spreadsheets to research briefs, claude cowork handles multi-step office
               work without the manual overhead.
             </p>
             <div class="use-cases">
@@ -886,7 +887,7 @@
               <details class="card" open>
                 <summary>Do I need to code?</summary>
                 <p>
-                  No. Describe the outcome in plain language. Cowork plans the steps,
+                  No. Describe the outcome in plain language. claude cowork plans the steps,
                   executes inside a secure VM, and drops finished files into your local folders.
                 </p>
               </details>
@@ -1008,7 +1009,7 @@
       const storedLocaleRaw = window.localStorage.getItem(LOCALE_KEY);
       const storedLocale = storedLocaleRaw ? normalizeLocale(storedLocaleRaw) : null;
 
-      if (storedLocale && storedLocale !== pageLocale && localePages[storedLocale]) {
+      if (storedLocale && storedLocale !== pageLocale && pageLocale === "en" && localePages[storedLocale]) {
         window.location.href = localePages[storedLocale];
       } else {
         window.localStorage.setItem(LOCALE_KEY, pageLocale);
