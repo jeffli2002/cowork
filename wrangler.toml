@@ -1,7 +1,6 @@
 name = "cowork"
 compatibility_date = "2026-01-13"
 
-# Deploy static assets from the dist directory
-[assets]
-directory = "./dist"
+# Cloudflare Pages configuration
+pages_build_output_dir = "./dist"
 
