@@ -24,7 +24,181 @@
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap');
+
+        :root {
+            --ink: #141413;
+            --paper: #faf9f5;
+            --stone: #e8e6dc;
+            --ash: #b0aea5;
+            --accent-1: #d97757;
+            --accent-2: #6a9bcc;
+            --accent-3: #788c5d;
+            --shadow: 0 24px 60px rgba(20, 20, 19, 0.12);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(14px);
+            background: rgba(250, 249, 245, 0.85);
+            border-bottom: 1px solid rgba(20, 20, 19, 0.08);
+            color: var(--ink);
+            font-family: "Lora", Georgia, serif;
+        }
+
+        .site-header a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1160px, 92vw);
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 18px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: #D97757;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .brand-mark i {
+            color: white;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: var(--accent-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-dropdown {
+            position: relative;
+        }
+
+        .lang-dropdown select {
+            appearance: none;
+            border-radius: 999px;
+            border: 1px solid rgba(20, 20, 19, 0.2);
+            background: var(--paper);
+            padding: 8px 34px 8px 14px;
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+        }
+
+        .lang-dropdown::after {
+            content: "v";
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: var(--accent-1);
+            pointer-events: none;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--paper);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            border-color: rgba(20, 20, 19, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 860px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-cta {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #fcfcf9;
@@ -62,8 +236,38 @@
     </style>
 </head>
 <body>
-    <div id="root">
-        <main class="max-w-5xl mx-auto px-6 py-12">
+    <div id="root" class="min-h-screen flex flex-col">
+        <header class="site-header">
+            <div class="container nav">
+                <a href="index.html" class="brand">
+                    <span class="brand-mark" aria-hidden="true" title="Cowork">
+                        <i class="fas fa-users-cog"></i>
+                    </span>
+                    Cowork
+                </a>
+                <nav class="nav-links" aria-label="Primary">
+                    <a href="index.html#features">Funktionen</a>
+                    <a href="index.html#workflow">So funktioniert es</a>
+                    <a href="index.html#safety">Sicherheit</a>
+                    <a href="guide.html">Leitfaden</a>
+                    <a href="index.html#faq">FAQ</a>
+                </nav>
+                <div class="nav-cta">
+                    <div class="lang-dropdown">
+                        <select aria-label="Language" data-locale-select>
+                            <option value="en">English</option>
+                            <option value="zh">简体中文</option>
+                            <option value="ja">日本語</option>
+                            <option value="es">Español</option>
+                            <option value="de" selected>Deutsch</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                    <a class="btn btn-primary" href="guide.html">Loslegen</a>
+                </div>
+            </div>
+        </header>
+        <main class="max-w-5xl mx-auto px-6 py-12 flex-1">
             <header class="mb-10">
                 <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Leitfaden</p>
                 <h1 class="text-4xl md:text-5xl font-black text-slate-900">Claude Cowork Leitfaden</h1>
@@ -227,7 +431,87 @@
                 </ul>
             </section>
         </main>
+    <footer class="border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 py-10 text-sm text-slate-600">
+            <div class="grid gap-8 md:grid-cols-2">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Entdecken</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="hover:text-[#D97757] transition-colors" href="privacy.html">Datenschutzrichtlinie</a>
+                        <a class="hover:text-[#D97757] transition-colors" href="terms.html">Nutzungsbedingungen</a>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Referenzfälle</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="hover:text-[#D97757] transition-colors" href="https://viecom.pro" target="_blank" rel="noopener">AI Ecommerce</a>
+                        <a class="hover:text-[#D97757] transition-colors" href="https://futurai.org" target="_blank" rel="noopener">AI Education</a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 leading-relaxed mt-8 border-t border-slate-100 pt-6">
+                Dieses Projekt (die Claude-Cowork-Landingpage) ist ein unabhängiges Projekt, das zu Lern- und Forschungszwecken erstellt wurde,
+                und steht in keiner Weise unter Sponsoring, Zustimmung oder Verbindung mit Anthropic (Claude). Die auf dieser Seite dargestellten
+                Produktinformationen sind aus öffentlichen Quellen zusammengestellt und abgeleitet und stellen keine offizielle Position von Anthropic dar.
+                Für die tatsächliche Nutzung von Claude Cowork gelten die von Anthropic offiziell veröffentlichten Informationen und Bedingungen.
+            </p>
+        </div>
+    </footer>
     </div>
+<script>
+  const LOCALE_KEY = "coworkLocale";
+  const localeSelect = document.querySelector("[data-locale-select]");
+  const localePages = {
+    en: "/en/guide.html",
+    zh: "/zh/guide.html",
+    ja: "/ja/guide.html",
+    es: "/es/guide.html",
+    de: "/de/guide.html",
+    fr: "/fr/guide.html"
+  };
+
+  const normalizeLocale = (value) => {
+    if (!value) {
+      return "en";
+    }
+    const lower = value.toLowerCase();
+    if (lower.startsWith("zh")) {
+      return "zh";
+    }
+    if (lower.startsWith("ja")) {
+      return "ja";
+    }
+    if (lower.startsWith("es")) {
+      return "es";
+    }
+    if (lower.startsWith("de")) {
+      return "de";
+    }
+    if (lower.startsWith("fr")) {
+      return "fr";
+    }
+    return "en";
+  };
+
+  const pageLocale = normalizeLocale(
+    document.documentElement.lang || (localeSelect && localeSelect.value)
+  );
+  window.localStorage.setItem(LOCALE_KEY, pageLocale);
+  if (localeSelect) {
+    localeSelect.value = pageLocale;
+  }
+
+  if (localeSelect) {
+    localeSelect.addEventListener("change", (event) => {
+      const selected = normalizeLocale(event.target.value);
+      window.localStorage.setItem(LOCALE_KEY, selected);
+      const target = localePages[selected] || localePages.en;
+      if (target) {
+        window.location.href = target;
+      }
+    });
+  }
+</script>
 <script type="module" src="/index.tsx"></script>
 </body>
 </html>
