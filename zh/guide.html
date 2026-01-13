@@ -12,7 +12,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claude Cowork Guide</title>
+    <title>Claude Cowork 指南</title>
     <link rel="canonical" href="/zh/guide.html" />
     <link rel="alternate" hreflang="en" href="/en/guide.html" />
     <link rel="alternate" hreflang="zh" href="/zh/guide.html" />
@@ -62,216 +62,170 @@
     </style>
 </head>
 <body>
-    <div id="root" class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-20 bg-[#fcfcf9]/95 backdrop-blur border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-            <a href="index.html" class="flex items-center gap-3 font-semibold uppercase tracking-[0.2em] text-slate-900">
-                <span class="w-9 h-9 bg-[#D97757] rounded-xl flex items-center justify-center text-white shadow-sm">
-                    <i class="fas fa-users-cog"></i>
-                </span>
-                Cowork
-            </a>
-            <nav class="flex flex-wrap items-center gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500" aria-label="Primary">
-                <a class="hover:text-[#D97757] transition-colors" href="index.html#features">Features</a>
-                <a class="hover:text-[#D97757] transition-colors" href="index.html#workflow">How it works</a>
-                <a class="hover:text-[#D97757] transition-colors" href="index.html#safety">Safety</a>
-                <a class="text-[#D97757]" href="guide.html">Guide</a>
-                <a class="hover:text-[#D97757] transition-colors" href="index.html#faq">FAQ</a>
-            </nav>
-            <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em]">
-                <a class="inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-slate-600 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="privacy.html">Privacy</a>
-                <a class="inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-slate-600 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="terms.html">Terms</a>
-                <a class="inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-white hover:bg-slate-800 transition-colors" href="index.html">Get Started</a>
-            </div>
-        </div>
-    </header>
-        <main class="max-w-5xl mx-auto px-6 py-12 flex-1">
+    <div id="root">
+        <main class="max-w-5xl mx-auto px-6 py-12">
             <header class="mb-10">
-                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Guide</p>
-                <h1 class="text-4xl md:text-5xl font-black text-slate-900">Claude Cowork Guide</h1>
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">指南</p>
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900">Claude Cowork 指南</h1>
                 <p class="mt-4 text-slate-600 max-w-2xl">
-                    This static guide is a readable fallback when the interactive app is not built.
-                    To enable search and navigation, deploy the Vite build output for this project.
+                    当交互式应用尚未构建时，这份静态指南可作为可读的替代方案。
+                    要启用搜索和导航，请部署本项目的 Vite 构建产物。
                 </p>
                 <div class="mt-6 flex flex-wrap gap-3 text-sm">
-                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="index.html">Back to homepage</a>
-                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="privacy.html">Privacy Policy</a>
-                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="terms.html">Terms of Service</a>
+                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="index.html">返回首页</a>
+                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="privacy.html">隐私政策</a>
+                    <a class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-slate-700 hover:border-[#D97757] hover:text-[#D97757] transition-colors" href="terms.html">服务条款</a>
                 </div>
             </header>
 
             <nav class="bg-slate-50 border border-slate-200 rounded-2xl p-6 mb-10">
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Sections</p>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">章节</p>
                 <div class="grid sm:grid-cols-2 gap-2 text-sm">
-                    <a class="text-slate-700 hover:text-[#D97757]" href="#introduction">Introduction</a>
-                    <a class="text-slate-700 hover:text-[#D97757]" href="#installation">Installation</a>
-                    <a class="text-slate-700 hover:text-[#D97757]" href="#authentication">Authentication &amp; Security</a>
-                    <a class="text-slate-700 hover:text-[#D97757]" href="#basic-usage">Basic Usage</a>
-                    <a class="text-slate-700 hover:text-[#D97757]" href="#advanced-features">Advanced Features</a>
-                    <a class="text-slate-700 hover:text-[#D97757]" href="#troubleshooting">Troubleshooting</a>
-                    <a class="text-slate-700 hover:text-[#D97757]" href="#resources">Video Resources</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#introduction">简介</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#installation">安装</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#authentication">身份验证与安全</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#basic-usage">基础用法</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#advanced-features">高级功能</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#troubleshooting">故障排除</a>
+                    <a class="text-slate-700 hover:text-[#D97757]" href="#resources">视频资源</a>
                 </div>
             </nav>
 
             <section id="introduction" class="prose prose-slate max-w-none mb-12">
-                <h2>Introduction to Claude Cowork</h2>
+                <h2>Claude Cowork 简介</h2>
                 <p>
-                    Claude Cowork is Anthropic's first agentic AI product designed for non-technical office tasks.
-                    It transforms Claude from a conversational assistant into an action-first office agent that can
-                    plan, execute, and deliver work inside a secure local environment.
+                    Claude Cowork 是 Anthropic 面向非技术办公任务推出的首款代理式 AI 产品。
+                    它把 Claude 从对话式助手转变为行动优先的办公代理，可在安全的本地环境中规划、执行并交付工作。
                 </p>
-                <h3>Key benefits</h3>
+                <h3>关键优势</h3>
                 <ul>
-                    <li><strong>No coding required</strong>: Describe outcomes in plain language.</li>
-                    <li><strong>Local file access</strong>: Works directly with your authorized folders.</li>
-                    <li><strong>Professional output</strong>: Generates Excel, PowerPoint, and Word documents.</li>
-                    <li><strong>Long-running tasks</strong>: Handles extended workflows without timeouts.</li>
+                    <li><strong>无需编码</strong>：用通俗语言描述结果。</li>
+                    <li><strong>本地文件访问</strong>：直接处理你授权的文件夹。</li>
+                    <li><strong>专业输出</strong>：生成 Excel、PowerPoint 和 Word 文档。</li>
+                    <li><strong>长时任务</strong>：无需超时即可处理长流程。</li>
                 </ul>
-                <h3>Who can use it?</h3>
+                <h3>适用人群</h3>
                 <ul>
-                    <li>macOS users with Claude Desktop.</li>
-                    <li>Claude Max subscribers.</li>
+                    <li>使用 Claude Desktop 的 macOS 用户。</li>
+                    <li>Claude Max 订阅用户。</li>
                 </ul>
             </section>
 
             <section id="installation" class="prose prose-slate max-w-none mb-12">
-                <h2>Installation Guide</h2>
-                <h3>Prerequisites</h3>
+                <h2>安装指南</h2>
+                <h3>前置条件</h3>
                 <ol>
-                    <li>macOS (Research Preview requirement).</li>
-                    <li>Claude Desktop installed.</li>
-                    <li>Active Claude Max subscription.</li>
+                    <li>macOS（Research Preview 要求）。</li>
+                    <li>已安装 Claude Desktop。</li>
+                    <li>有效的 Claude Max 订阅。</li>
                 </ol>
-                <h3>Step-by-step installation</h3>
+                <h3>安装步骤</h3>
                 <ol>
-                    <li>Install Claude Desktop from <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a>.</li>
-                    <li>Upgrade to Claude Max in Settings → Subscription.</li>
-                    <li>Enable Cowork in Settings → Features → Cowork.</li>
-                    <li>Grant folder access when prompted.</li>
+                    <li>从 <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> 安装 Claude Desktop。</li>
+                    <li>在 设置 &gt; 订阅 中升级到 Claude Max。</li>
+                    <li>在 设置 &gt; 功能 &gt; Cowork 中启用 Cowork。</li>
+                    <li>按提示授予文件夹访问权限。</li>
                 </ol>
-                <h3>Verify installation</h3>
-                <p>Start a new conversation in Claude Desktop and look for the Cowork icon.</p>
+                <h3>验证安装</h3>
+                <p>在 Claude Desktop 中开始新对话，查看是否有 Cowork 图标。</p>
             </section>
 
             <section id="authentication" class="prose prose-slate max-w-none mb-12">
-                <h2>Authentication &amp; Security</h2>
+                <h2>身份验证与安全</h2>
                 <p>
-                    Cowork uses your Claude Desktop authentication tied to your Anthropic account and Claude Max subscription.
+                    Cowork 使用与 Anthropic 账户和 Claude Max 订阅绑定的 Claude Desktop 身份验证。
                 </p>
-                <h3>Security model</h3>
+                <h3>安全模型</h3>
                 <ul>
-                    <li><strong>VM isolation</strong>: Work runs inside a dedicated virtual machine.</li>
-                    <li><strong>User control</strong>: You review and approve every step.</li>
-                    <li><strong>Scoped access</strong>: Grant only the folders needed for a task.</li>
+                    <li><strong>VM 隔离</strong>：工作在专用虚拟机中运行。</li>
+                    <li><strong>用户控制</strong>：每一步都需要你审核并批准。</li>
+                    <li><strong>范围授权</strong>：只授予任务所需的文件夹。</li>
                 </ul>
-                <h3>Best practices</h3>
+                <h3>最佳实践</h3>
                 <ul>
-                    <li>Start with a single folder and expand access only as needed.</li>
-                    <li>Review permissions periodically.</li>
-                    <li>Revoke access for folders you no longer use.</li>
+                    <li>先从一个文件夹开始，按需扩大权限。</li>
+                    <li>定期检查权限。</li>
+                    <li>撤销不再使用的文件夹访问。</li>
                 </ul>
             </section>
 
             <section id="basic-usage" class="prose prose-slate max-w-none mb-12">
-                <h2>Basic Usage</h2>
-                <h3>Workflow</h3>
+                <h2>基础用法</h2>
+                <h3>流程</h3>
                 <ol>
-                    <li>Describe your goal in plain language.</li>
-                    <li>Review the plan and adjust if needed.</li>
-                    <li>Approve execution inside the secure VM.</li>
-                    <li>Receive results in your authorized folders.</li>
+                    <li>用通俗语言描述目标。</li>
+                    <li>查看计划并按需调整。</li>
+                    <li>在安全 VM 中批准执行。</li>
+                    <li>在你授权的文件夹中接收结果。</li>
                 </ol>
-                <h3>Example commands</h3>
-                <pre><code>"Create a summary document of all PDF files in my Research folder"</code></pre>
-                <pre><code>"Create a PowerPoint presentation summarizing my Q4 sales data"</code></pre>
-                <pre><code>"Analyze all CSV files in my Data folder and create a summary report"</code></pre>
+                <h3>示例命令</h3>
+                <pre><code>"创建一份汇总文档，涵盖我研究文件夹中的所有 PDF 文件"</code></pre>
+                <pre><code>"创建一份 PowerPoint 演示文稿，概述我的 Q4 销售数据"</code></pre>
+                <pre><code>"分析我数据文件夹中的所有 CSV 文件并生成汇总报告"</code></pre>
             </section>
 
             <section id="advanced-features" class="prose prose-slate max-w-none mb-12">
-                <h2>Advanced Features</h2>
-                <h3>Sub-agent collaboration</h3>
+                <h2>高级功能</h2>
+                <h3>子代理协作</h3>
                 <p>
-                    Cowork can split complex goals into parallel sub-tasks, with multiple agents working simultaneously.
+                    Cowork 可以将复杂目标拆分为并行子任务，让多个代理同时工作。
                 </p>
-                <pre><code>"Research the top 5 competitors in the AI space and create a comparison report"</code></pre>
-                <h3>Professional format support</h3>
+                <pre><code>"调研 AI 领域前 5 名竞争对手并生成对比报告"</code></pre>
+                <h3>专业格式支持</h3>
                 <ul>
-                    <li>Excel spreadsheets with formulas and charts.</li>
-                    <li>PowerPoint presentations with templates and layouts.</li>
-                    <li>Word documents with consistent formatting.</li>
+                    <li>带公式和图表的 Excel 电子表格。</li>
+                    <li>带模板和版式的 PowerPoint 演示文稿。</li>
+                    <li>格式一致的 Word 文档。</li>
                 </ul>
-                <h3>Long-running tasks</h3>
+                <h3>长时任务</h3>
                 <ul>
-                    <li>No session timeouts for extended workflows.</li>
-                    <li>Progress tracking and resume support.</li>
-                    <li>Background execution while you keep working.</li>
+                    <li>长流程无会话超时。</li>
+                    <li>进度跟踪与续跑支持。</li>
+                    <li>你继续工作时可在后台执行。</li>
                 </ul>
-                <h3>Custom workflows</h3>
+                <h3>自定义流程</h3>
                 <ol>
-                    <li>Define a workflow template.</li>
-                    <li>Save it for reuse.</li>
-                    <li>Apply it with new inputs.</li>
+                    <li>定义一个流程模板。</li>
+                    <li>保存以便复用。</li>
+                    <li>用新的输入应用。</li>
                 </ol>
             </section>
 
             <section id="troubleshooting" class="prose prose-slate max-w-none mb-12">
-                <h2>Troubleshooting</h2>
-                <h3>Cowork feature not appearing</h3>
+                <h2>故障排除</h2>
+                <h3>未显示 Cowork 功能</h3>
                 <ul>
-                    <li>Verify your Claude Max subscription.</li>
-                    <li>Update Claude Desktop to the latest version.</li>
-                    <li>Restart Claude Desktop and confirm Cowork is enabled.</li>
+                    <li>确认你的 Claude Max 订阅。</li>
+                    <li>更新 Claude Desktop 至最新版本。</li>
+                    <li>重启 Claude Desktop 并确认 Cowork 已启用。</li>
                 </ul>
-                <h3>Permission denied errors</h3>
+                <h3>权限被拒错误</h3>
                 <ul>
-                    <li>Check macOS System Preferences → Security &amp; Privacy → Files and Folders.</li>
-                    <li>Re-authorize folder access in Claude Desktop settings.</li>
+                    <li>检查 macOS 系统设置 &gt; 隐私与安全 &gt; 文件与文件夹。</li>
+                    <li>在 Claude Desktop 设置中重新授权文件夹访问。</li>
                 </ul>
-                <h3>Performance issues</h3>
+                <h3>性能问题</h3>
                 <ul>
-                    <li>Large file operations take time.</li>
-                    <li>Break complex tasks into smaller steps.</li>
-                    <li>Ensure stable internet connectivity.</li>
+                    <li>大文件操作需要时间。</li>
+                    <li>将复杂任务拆分为更小步骤。</li>
+                    <li>确保网络连接稳定。</li>
                 </ul>
-                <h3>Getting help</h3>
+                <h3>获取帮助</h3>
                 <ol>
-                    <li>Read <a href="https://claude.ai/docs" target="_blank" rel="noopener">official documentation</a>.</li>
-                    <li>Visit the <a href="https://community.anthropic.com" target="_blank" rel="noopener">community forum</a>.</li>
-                    <li>Contact Anthropic support if issues persist.</li>
+                    <li>阅读 <a href="https://claude.ai/docs" target="_blank" rel="noopener">官方文档</a>。</li>
+                    <li>访问 <a href="https://community.anthropic.com" target="_blank" rel="noopener">社区论坛</a>。</li>
+                    <li>问题仍然存在时联系 Anthropic 支持。</li>
                 </ol>
             </section>
 
             <section id="resources" class="prose prose-slate max-w-none">
-                <h2>Video Resources</h2>
+                <h2>视频资源</h2>
                 <ul>
-                    <li><a href="https://www.youtube.com/watch?v=UAmKyyZ-b9E" target="_blank" rel="noopener">Claude Cowork Official Introduction</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=KLzcqt9fIus" target="_blank" rel="noopener">Claude Cowork User Test Experience &amp; Feedback</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=UAmKyyZ-b9E" target="_blank" rel="noopener">Claude Cowork 官方介绍</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=KLzcqt9fIus" target="_blank" rel="noopener">Claude Cowork 用户测试体验与反馈</a></li>
                 </ul>
             </section>
         </main>
-    <footer class="border-t border-slate-200">
-        <div class="max-w-5xl mx-auto px-6 py-10 text-sm text-slate-600">
-            <div class="grid gap-8 md:grid-cols-2">
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Explore</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a class="hover:text-[#D97757] transition-colors" href="privacy.html">Privacy Policy</a>
-                        <a class="hover:text-[#D97757] transition-colors" href="terms.html">Terms of Service</a>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Ref cases</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a class="hover:text-[#D97757] transition-colors" href="https://viecom.pro" target="_blank" rel="noopener">AI Ecommerce</a>
-                        <a class="hover:text-[#D97757] transition-colors" href="https://futurai.org" target="_blank" rel="noopener">AI Education</a>
-                    </div>
-                </div>
-            </div>
-            <p class="text-xs text-slate-500 leading-relaxed mt-8 border-t border-slate-100 pt-6">
-                This project (the Claude Cowork landing page) is an independent project created for learning and research and is not sponsored, endorsed, or affiliated with Anthropic (Claude) in any way. The product information shown on this page is compiled and inferred from public sources and does not represent Anthropic's official position. For actual use of Claude Cowork, please rely on information and terms published by Anthropic.
-            </p>
-        </div>
-    </footer>
     </div>
 <script type="module" src="/index.tsx"></script>
 </body>
