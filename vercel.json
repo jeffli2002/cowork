@@ -1,0 +1,37 @@
+{
+  "rewrites": [
+    {
+      "source": "/guide",
+      "destination": "/guide.html"
+    },
+    {
+      "source": "/guide/",
+      "destination": "/guide.html"
+    },
+    {
+      "source": "/en/guide",
+      "destination": "/en/guide.html"
+    },
+    {
+      "source": "/zh/guide",
+      "destination": "/zh/guide.html"
+    },
+    {
+      "source": "/ja/guide",
+      "destination": "/ja/guide.html"
+    },
+    {
+      "source": "/es/guide",
+      "destination": "/es/guide.html"
+    },
+    {
+      "source": "/de/guide",
+      "destination": "/de/guide.html"
+    },
+    {
+      "source": "/fr/guide",
+      "destination": "/fr/guide.html"
+    }
+  ]
+}
+

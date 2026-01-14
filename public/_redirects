@@ -1,0 +1,12 @@
+# Rewrite /guide to guide.html (internal rewrite, URL stays as /guide)
+/guide /guide.html 200
+/guide/ /guide.html 200
+
+# Language-specific guide rewrites (internal rewrite, URL stays as /xx/guide)
+/en/guide /en/guide.html 200
+/zh/guide /zh/guide.html 200
+/ja/guide /ja/guide.html 200
+/es/guide /es/guide.html 200
+/de/guide /de/guide.html 200
+/fr/guide /fr/guide.html 200
+
