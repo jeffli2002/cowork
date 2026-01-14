@@ -1,15 +1,6 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0QTZW9GYX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      gtag('config', 'G-Z0QTZW9GYX');
-    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cowork | Handlungsorientierte KI für die Arbeit</title>
@@ -17,14 +8,10 @@
       name="description"
       content="Cowork ist ein handlungsorientierter KI-Office-Agent, der in einer sicheren lokalen Umgebung plant, ausführt und echte Arbeit liefert."
     />
-    <link rel="canonical" href="/de/" />
-    <link rel="alternate" hreflang="en" href="/en/" />
-    <link rel="alternate" hreflang="zh" href="/zh/" />
-    <link rel="alternate" hreflang="ja" href="/ja/" />
-    <link rel="alternate" hreflang="es" href="/es/" />
-    <link rel="alternate" hreflang="de" href="/de/" />
-    <link rel="alternate" hreflang="fr" href="/fr/" />
-    <link rel="alternate" hreflang="x-default" href="/" />
+    <meta
+      name="keywords"
+      content="claude cowork, anthropic claude, ai knowledge work, autonomous ai agent, claude desktop, ai productivity, file automation"
+    />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
       :root {
@@ -281,7 +268,7 @@
       .hero p {
         font-size: 18px;
         line-height: 1.7;
-        max-width: 650px;
+        max-width: 520px;
         color: rgba(20, 20, 19, 0.8);
       }
 
@@ -690,7 +677,7 @@
             <a href="#features">Funktionen</a>
             <a href="#workflow">So funktioniert es</a>
             <a href="#safety">Sicherheit</a>
-            <a href="guide.html">Leitfaden</a>
+            <a href="../guide.html">Leitfaden</a>
             <a href="#faq">FAQ</a>
           </nav>
           <div class="nav-cta">
@@ -704,7 +691,7 @@
                 <option value="fr">Français</option>
               </select>
             </div>
-            <a class="btn btn-primary" href="guide.html">Loslegen</a>
+            <a class="btn btn-primary" href="../guide.html">Loslegen</a>
           </div>
         </div>
       </header>
@@ -717,18 +704,8 @@
               <div class="eyebrow">Claude Cowork</div>
               <h1>Gespräche in echte Arbeit verwandeln.</h1>
               <p>
-                <span style="display: inline-flex; align-items: center; gap: 8px; margin-right: 6px; vertical-align: middle; line-height: 1;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; flex-shrink: 0; vertical-align: middle; width: 20px; height: 20px;">
-                    <circle cx="12" cy="12" r="2.5" fill="#D97757"/>
-                    <ellipse cx="12" cy="5" rx="1.5" ry="3.5" fill="#D97757"/>
-                    <ellipse cx="12" cy="19" rx="1.5" ry="3.5" fill="#D97757"/>
-                    <ellipse cx="5" cy="12" rx="3.5" ry="1.5" fill="#D97757"/>
-                    <ellipse cx="19" cy="12" rx="3.5" ry="1.5" fill="#D97757"/>
-                    <ellipse cx="7.07" cy="7.07" rx="1.5" ry="3.5" fill="#D97757" transform="rotate(-45 7.07 7.07)"/>
-                    <ellipse cx="16.93" cy="16.93" rx="1.5" ry="3.5" fill="#D97757" transform="rotate(-45 16.93 16.93)"/>
-                    <ellipse cx="16.93" cy="7.07" rx="1.5" ry="3.5" fill="#D97757" transform="rotate(45 16.93 7.07)"/>
-                    <ellipse cx="7.07" cy="16.93" rx="1.5" ry="3.5" fill="#D97757" transform="rotate(45 7.07 16.93)"/>
-                  </svg>
+                <span style="display: inline-flex; align-items: center; gap: 8px; margin-right: 6px; vertical-align: middle;">
+                  <img src="/anthropic-logo.svg" alt="Anthropic" width="20" height="20" style="display: inline-block; flex-shrink: 0; object-fit: contain;">
                   <span style="font-weight: 600; color: #141413;">Anthropic</span>
                 </span>
                 Claude Cowork ist dein handlungsorientierter KI-Office-Agent. Er plant, führt aus
@@ -736,7 +713,7 @@
                 vom Auftrag zum fertigen Ergebnis kommst.
               </p>
               <div class="hero-actions">
-                <a class="btn btn-primary" href="guide.html">Loslegen</a>
+                <a class="btn btn-primary" href="../guide.html">Loslegen</a>
               </div>
               <div class="hero-meta">
                 <div>macOS + Claude Max erforderlich</div>
@@ -957,8 +934,8 @@
             <div>
               <p class="footer-title">Entdecken</p>
               <div class="footer-links">
-                <a href="privacy.html">Datenschutzrichtlinie</a>
-                <a href="terms.html">Nutzungsbedingungen</a>
+                <a href="../privacy.html">Datenschutzrichtlinie</a>
+                <a href="../terms.html">Nutzungsbedingungen</a>
               </div>
             </div>
             <div>
@@ -996,12 +973,12 @@
       const LOCALE_KEY = "coworkLocale";
       const localeSelect = document.querySelector("[data-locale-select]");
       const localePages = {
-        en: "/en/",
-        zh: "/zh/",
-        ja: "/ja/",
-        es: "/es/",
-        de: "/de/",
-        fr: "/fr/"
+        en: "../en/",
+        zh: "../zh/",
+        ja: "../ja/",
+        es: "../es/",
+        de: "../de/",
+        fr: "../fr/"
       };
 
       const normalizeLocale = (value) => {

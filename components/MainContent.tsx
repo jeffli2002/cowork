@@ -76,30 +76,11 @@ const MainContent: React.FC<MainContentProps> = ({ section, loading }) => {
   };
 
   const processInlineStyles = (text: string) => {
-    // Match markdown links [text](url), bold **text**, and code `text`
-    const parts = text.split(/(\[.*?\]\(.*?\)|\*\*.*?\*\*|`.*?`)/g);
+    const parts = text.split(/(\*\*.*?\*\*|`.*?`)/g);
     return parts.map((part, i) => {
-      // Markdown link: [text](url)
-      const linkMatch = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
-      if (linkMatch) {
-        const [, linkText, linkUrl] = linkMatch;
-        return (
-          <a
-            key={i}
-            href={linkUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#D97757] hover:text-[#c06548] underline font-medium transition-colors"
-          >
-            {linkText}
-          </a>
-        );
-      }
-      // Bold text: **text**
       if (part.startsWith('**') && part.endsWith('**')) {
         return <strong key={i} className="font-bold text-slate-900">{part.slice(2, -2)}</strong>;
       }
-      // Code: `text`
       if (part.startsWith('`') && part.endsWith('`')) {
         return <code key={i}>{part.slice(1, -1)}</code>;
       }

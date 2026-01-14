@@ -3,9 +3,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Header from './components/Header';
-import Footer from './components/Footer';
-import { SectionKey, DocumentationData, Locale } from './types';
-import { fetchSectionContent, searchDocumentation } from './services/staticContentService';
+import { SectionKey, DocumentationData } from './types';
+import { fetchSectionContent, searchDocumentation } from './services/geminiService';
 
 const SECTIONS_CONFIG: Record<SectionKey, { title: string; icon: string }> = {
   introduction: { title: 'Introduction', icon: 'fa-info-circle' },
@@ -16,80 +15,11 @@ const SECTIONS_CONFIG: Record<SectionKey, { title: string; icon: string }> = {
   troubleshooting: { title: 'Troubleshooting', icon: 'fa-bug' }
 };
 
-const LOCALE_KEY = 'coworkLocale';
-const SUPPORTED_LOCALES: Locale[] = ['en', 'zh', 'ja', 'es', 'de', 'fr'];
-const LOCALE_PREFIXES: Record<Locale, string> = {
-  en: '/en/',
-  zh: '/zh/',
-  ja: '/ja/',
-  es: '/es/',
-  de: '/de/',
-  fr: '/fr/'
-};
-const LOCALE_GUIDE_PATHS: Record<Locale, string> = {
-  en: '/en/guide.html',
-  zh: '/zh/guide.html',
-  ja: '/ja/guide.html',
-  es: '/es/guide.html',
-  de: '/de/guide.html',
-  fr: '/fr/guide.html'
-};
-
-const normalizeLocale = (value: string | null | undefined): Locale => {
-  if (!value) {
-    return 'en';
-  }
-  const lower = value.toLowerCase();
-  if (lower.startsWith('zh')) {
-    return 'zh';
-  }
-  if (lower.startsWith('ja')) {
-    return 'ja';
-  }
-  if (lower.startsWith('es')) {
-    return 'es';
-  }
-  if (lower.startsWith('de')) {
-    return 'de';
-  }
-  if (lower.startsWith('fr')) {
-    return 'fr';
-  }
-  return 'en';
-};
-
-const getLocaleFromPath = (): Locale | null => {
-  if (typeof window === 'undefined') {
-    return null;
-  }
-  const path = window.location.pathname;
-  const matched = (Object.keys(LOCALE_PREFIXES) as Locale[]).find((locale) =>
-    path.startsWith(LOCALE_PREFIXES[locale])
-  );
-  return matched || null;
-};
-
-const getInitialLocale = (): Locale => {
-  if (typeof window === 'undefined') {
-    return 'en';
-  }
-  const pathLocale = getLocaleFromPath();
-  if (pathLocale) {
-    return pathLocale;
-  }
-  const stored = window.localStorage.getItem(LOCALE_KEY);
-  if (stored && SUPPORTED_LOCALES.includes(stored as Locale)) {
-    return stored as Locale;
-  }
-  return normalizeLocale(window.navigator.language);
-};
-
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<SectionKey>('introduction');
   const [docsData, setDocsData] = useState<Partial<DocumentationData>>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [locale, setLocale] = useState<Locale>(getInitialLocale);
   
   // Search state
   const [searchQuery, setSearchQuery] = useState('');
@@ -124,27 +54,6 @@ const App: React.FC = () => {
     }
   }, [activeSection, loadSection, searchQuery]);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-    window.localStorage.setItem(LOCALE_KEY, locale);
-    document.documentElement.lang = locale;
-  }, [locale]);
-
-  const handleLocaleChange = (nextLocale: Locale) => {
-    setLocale(nextLocale);
-    if (typeof window === 'undefined') {
-      return;
-    }
-    if (window.location.pathname.endsWith('guide.html')) {
-      const target = LOCALE_GUIDE_PATHS[nextLocale];
-      if (target && window.location.pathname !== target) {
-        window.location.href = target;
-      }
-    }
-  };
-
   const handleSearch = async (query: string) => {
     setSearchQuery(query);
     setSearchResult(null);
@@ -162,7 +71,7 @@ const App: React.FC = () => {
       return;
     }
 
-    // Otherwise, perform local text search
+    // Otherwise, perform AI-powered global search
     const result = await searchDocumentation(query);
     setSearchResult(result);
     setIsSearching(false);
@@ -200,15 +109,12 @@ const App: React.FC = () => {
         sections={SECTIONS_CONFIG} 
       />
 
-      <Header 
-        onSearch={handleSearch} 
-        onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        isMobileMenuOpen={isMobileMenuOpen}
-        locale={locale}
-        onLocaleChange={handleLocaleChange}
-      />
-
-      <div className="flex-1 flex flex-col min-w-0 md:ml-68 pt-16">
+      <div className="flex-1 flex flex-col min-w-0">
+        <Header 
+          onSearch={handleSearch} 
+          onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          isMobileMenuOpen={isMobileMenuOpen}
+        />
 
         {/* Mobile Navigation Overlay */}
         {isMobileMenuOpen && (
@@ -245,7 +151,7 @@ const App: React.FC = () => {
           </div>
         )}
 
-        <main className="flex-1 overflow-x-hidden pb-40">
+        <main className="flex-1 overflow-x-hidden">
           {searchQuery ? (
             <div className="max-w-4xl mx-auto px-6 py-12 md:px-12">
               <button 
@@ -261,8 +167,6 @@ const App: React.FC = () => {
             <MainContent section={currentSection} loading={loading} />
           )}
         </main>
-        
-        <Footer locale={locale} />
       </div>
 
       {/* Quick Access FAB (Mobile) */}

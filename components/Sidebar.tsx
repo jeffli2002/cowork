@@ -10,8 +10,8 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ activeSection, onSectionSelect, sections }) => {
   return (
-    <div className="w-68 h-screen fixed top-16 left-0 bg-white border-r border-slate-200 flex flex-col hidden md:flex shrink-0">
-      <div className="p-8 border-b border-slate-100 flex items-center">
+    <div className="w-68 h-screen sticky top-0 bg-white border-r border-slate-200 flex flex-col hidden md:flex shrink-0">
+      <div className="p-8 border-b border-slate-100 h-16 flex items-center">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 bg-[#D97757] rounded-xl flex items-center justify-center text-white shadow-sm">
             <i className="fas fa-users-cog"></i>

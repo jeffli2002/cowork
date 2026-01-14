@@ -2,11 +2,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { Section, SectionKey } from "../types";
 
-// Get API key from environment variables
-// Vite exposes env vars prefixed with VITE_ 
-// Set VITE_GEMINI_API_KEY in your .env file or .env.local file
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
-const ai = new GoogleGenAI({ apiKey: apiKey || '' });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export async function fetchSectionContent(sectionId: string, sectionTitle: string): Promise<{ content: string; sources: any[] }> {
   try {
