@@ -235,122 +235,308 @@
   <body>
     <div class="page">
       <header>
-        <div class="container">
-          <span class="brand">
-            <span class="brand-mark">C</span>
-            COWORK
-          </span>
+        <div class="container nav">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true"></span>
+            Cowork
+          </div>
+          <nav class="nav-links" aria-label="Primary">
+            <a href="#features">Features</a>
+            <a href="#workflow">How it works</a>
+            <a href="#safety">Safety</a>
+            <a href="guide.html">Guide</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <div class="nav-cta">
+            <div class="lang-dropdown">
+              <select aria-label="Language">
+                <option selected>English</option>
+                <option>Simplified Chinese</option>
+                <option>Japanese</option>
+                <option>Spanish</option>
+                <option>German</option>
+                <option>French</option>
+              </select>
+            </div>
+            <a class="btn btn-primary" href="guide.html">Get Started</a>
+          </div>
         </div>
       </header>
 
-      <main class="container">
-        <section class="hero">
-          <div>
-            <p class="eyebrow">Locale Directory</p>
-            <h1>Select your language</h1>
-            <p class="lead">
-              Cowork is available in multiple languages. Choose a locale to open the
-              corresponding homepage and guide. Your preference is stored locally so
-              the next visit starts in the same language.
-            </p>
+      <main>
+        <section class="hero hero-centered">
+          <div class="container hero-grid">
+            <div data-reveal>
+              <div class="tag">Research Preview</div>
+              <div class="eyebrow">claude cowork</div>
+              <h1>Turn conversation into real work.</h1>
+              <p>
+                claude cowork is your action-first AI office agent. It plans, executes,
+                and delivers inside a secure local workspace so you move from request to
+                finished artifacts without handoffs.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="guide.html">Get Started</a>
+              </div>
+              <div class="hero-meta">
+                <div>macOS + Claude Max required</div>
+                <div>Local file access with user control</div>
+              </div>
+            </div>
           </div>
-          <div class="language-grid">
-            <a class="language-card" href="/en/" data-locale-link="en">
-              <div class="language-name">
-                <span>English</span>
-                <span>English</span>
-              </div>
-              <span class="language-badge">EN</span>
-            </a>
-            <a class="language-card" href="/zh/" data-locale-link="zh">
-              <div class="language-name">
-                <span>简体中文</span>
-                <span>Simplified Chinese</span>
-              </div>
-              <span class="language-badge">ZH</span>
-            </a>
-            <a class="language-card" href="/ja/" data-locale-link="ja">
-              <div class="language-name">
-                <span>日本語</span>
-                <span>Japanese</span>
-              </div>
-              <span class="language-badge">JA</span>
-            </a>
-            <a class="language-card" href="/es/" data-locale-link="es">
-              <div class="language-name">
-                <span>Español</span>
-                <span>Spanish</span>
-              </div>
-              <span class="language-badge">ES</span>
-            </a>
-            <a class="language-card" href="/de/" data-locale-link="de">
-              <div class="language-name">
-                <span>Deutsch</span>
-                <span>German</span>
-              </div>
-              <span class="language-badge">DE</span>
-            </a>
-            <a class="language-card" href="/fr/" data-locale-link="fr">
-              <div class="language-name">
-                <span>Français</span>
-                <span>French</span>
-              </div>
-              <span class="language-badge">FR</span>
-            </a>
-          </div>
-          <p class="hint">
-            Looking for the legal pages? They live under each locale, such as
-            <a href="/en/privacy.html">/en/privacy.html</a>.
-          </p>
         </section>
+
+        <section class="mission-control">
+          <div class="container mission-grid">
+            <div data-reveal>
+              <div class="eyebrow">Live mission control</div>
+              <h2>See every step before it runs.</h2>
+              <p class="section-lead">
+                A dedicated control surface shows how claude cowork plans, executes,
+                and delivers so you always know what is happening.
+              </p>
+            </div>
+            <div class="hero-card card" data-reveal>
+              <h3>Live mission control</h3>
+              <div class="task-stack">
+                <div class="task">
+                  <strong>Plan</strong>
+                  Claude breaks the goal into parallel sub-tasks.
+                </div>
+                <div class="task">
+                  <strong>Execute</strong>
+                  Work happens inside an isolated VM with your approval.
+                </div>
+                <div class="task">
+                  <strong>Deliver</strong>
+                  Finished files appear in your local folders, ready to ship.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features">
+          <div class="container" data-reveal>
+            <h2>Designed for real office work</h2>
+            <p class="section-lead">
+              claude cowork does not just respond. It coordinates, edits, and outputs
+              professional documents in the formats your team already uses.
+            </p>
+            <div class="feature-grid">
+              <div class="feature-card card">
+                <h3>Local file access</h3>
+                <p>No uploads. Claude reads and edits the folders you authorize.</p>
+              </div>
+              <div class="feature-card card">
+                <h3>Sub-agent collaboration</h3>
+                <p>Complex goals split into parallel tasks for faster outcomes.</p>
+              </div>
+              <div class="feature-card card">
+                <h3>Professional output</h3>
+                <p>Native support for Excel, PowerPoint, and Word formats.</p>
+              </div>
+              <div class="feature-card card">
+                <h3>Long-running tasks</h3>
+                <p>Let Cowork run in the background without context limits.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="workflow">
+          <div class="container" data-reveal>
+            <h2>How it works</h2>
+            <p class="section-lead">
+              A simple four-step flow keeps you in control while Cowork handles the
+              heavy lifting.
+            </p>
+            <div class="steps">
+              <div class="step card">
+                <span>1</span>
+                <div>
+                  <h3>Set the goal</h3>
+                  <p>Describe the outcome in natural language, like you would to a teammate.</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>2</span>
+                <div>
+                  <h3>Build the plan</h3>
+                  <p>Claude creates a step-by-step approach and confirms before execution.</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>3</span>
+                <div>
+                  <h3>Run securely</h3>
+                  <p>Tasks run inside an isolated VM with clear visibility and control.</p>
+                </div>
+              </div>
+              <div class="step card">
+                <span>4</span>
+                <div>
+                  <h3>Receive results</h3>
+                  <p>Outputs land directly in your local folders, ready to send.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="safety">
+          <div class="container" data-reveal>
+            <h2>Safety and control</h2>
+            <p class="section-lead">
+              Cowork is designed to keep sensitive files safe while giving you full
+              visibility into every step.
+            </p>
+            <div class="split">
+              <div>
+                <h3>Built on VM isolation</h3>
+                <p>
+                  Every action runs inside a dedicated virtual machine, protecting your
+                  system and ensuring clear boundaries between AI automation and your
+                  core environment.
+                </p>
+                <div class="use-cases">
+                  <div class="case card">
+                    <h4>Realtime oversight</h4>
+                    <p>Monitor actions, pause, or intervene at any time.</p>
+                  </div>
+                  <div class="case card">
+                    <h4>Scoped access</h4>
+                    <p>Grant only the folders Cowork needs for the task.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="security-panel card">
+                <h3>Trust signals</h3>
+                <ul>
+                  <li>Local-first execution with explicit user permission.</li>
+                  <li>Human-readable plan before automation runs.</li>
+                  <li>Clear audit trail of every action.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="use-cases">
+          <div class="container" data-reveal>
+            <h2>Everyday use cases</h2>
+            <p class="section-lead">
+              From spreadsheets to research briefs, Cowork handles multi-step office
+              work without the manual overhead.
+            </p>
+            <div class="use-cases">
+              <div class="case card">
+                <h4>Financial analysis</h4>
+                <p>Aggregate CSVs and deliver polished reporting packages.</p>
+              </div>
+              <div class="case card">
+                <h4>Market research</h4>
+                <p>Collect sources, synthesize findings, and format a brief.</p>
+              </div>
+              <div class="case card">
+                <h4>Document cleanup</h4>
+                <p>Rename, categorize, and summarize thousands of files.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq">
+          <div class="container" data-reveal>
+            <h2>FAQ</h2>
+            <div class="faq">
+              <details class="card" open>
+                <summary>Do I need to code?</summary>
+                <p>
+                  No. Describe the outcome in plain language. Cowork plans the steps,
+                  executes inside a secure VM, and drops finished files into your local folders.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Are my files uploaded?</summary>
+                <p>
+                  No. Cowork only works on folders you authorize and performs actions inside
+                  an isolated VM. You can review each step and keep full control over access.
+                </p>
+              </details>
+              <details class="card">
+                <summary>What types of output can it deliver?</summary>
+                <p>
+                  Professional, native files your team already uses, including Excel spreadsheets
+                  with formulas, PowerPoint decks, and Word documents.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Can it handle long-running tasks?</summary>
+                <p>
+                  Yes. Cowork is designed for longer workflows without session timeouts, so it can
+                  finish multi-step tasks from start to delivery.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Who can join the Research Preview?</summary>
+                <p>It is available to Claude Max subscribers on macOS using Claude Desktop.</p>
+              </details>
+              <details class="card">
+                <summary>Which languages are supported?</summary>
+                <p>
+                  English (default), Simplified Chinese, Japanese, Spanish, German, and French with
+                  a manual language switcher.
+                </p>
+              </details>
+            </div>
+          </div>
+        </section>
+
       </main>
+
+      <footer>
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <p class="footer-title">Explore</p>
+              <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="#">Status</a>
+              </div>
+            </div>
+            <div>
+              <p class="footer-title">Ref cases</p>
+              <div class="footer-links">
+                <a href="https://viecom.pro" target="_blank" rel="noopener">AI Ecommerce</a>
+                <a href="https://futurai.org" target="_blank" rel="noopener">AI Education</a>
+              </div>
+            </div>
+          </div>
+          <p>
+            本项目是一个基于学习和研究兴趣创建的独立项目，并非由
+            Anthropic (Claude) 公司赞助、认可或以任何形式关联。本页面所展示的产品信息仅基于
+            公开资料进行整理和推测，不代表 Anthropic 官方立场。用户在使用 Claude Cowork 产品时，
+            应以 Anthropic 官方发布的信息和条款为准。
+          </p>
+        </div>
+      </footer>
     </div>
 
     <script>
-      const LOCALE_KEY = "coworkLocale";
-      const localeLinks = document.querySelectorAll("[data-locale-link]");
-
-      const normalizeLocale = (value) => {
-        if (!value) {
-          return "en";
-        }
-        const lower = value.toLowerCase();
-        if (lower.startsWith("zh")) {
-          return "zh";
-        }
-        if (lower.startsWith("ja")) {
-          return "ja";
-        }
-        if (lower.startsWith("es")) {
-          return "es";
-        }
-        if (lower.startsWith("de")) {
-          return "de";
-        }
-        if (lower.startsWith("fr")) {
-          return "fr";
-        }
-        return "en";
-      };
-
-      const storedLocale = normalizeLocale(
-        window.localStorage.getItem(LOCALE_KEY) || navigator.language
+      const revealItems = document.querySelectorAll("[data-reveal]");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.2 }
       );
-      const storedCard = document.querySelector(
-        `[data-locale-link="${storedLocale}"]`
-      );
-      if (storedCard) {
-        storedCard.classList.add("is-selected");
-      }
-
-      localeLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          const locale = link.getAttribute("data-locale-link");
-          if (locale) {
-            window.localStorage.setItem(LOCALE_KEY, locale);
-          }
-        });
-      });
+      revealItems.forEach((item) => observer.observe(item));
     </script>
   </body>
 </html>
