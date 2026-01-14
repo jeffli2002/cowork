@@ -785,36 +785,35 @@
           <div class="container" data-reveal>
             <h2>Fonctionnement</h2>
             <p class="section-lead">
-              Un flux simple en quatre étapes vous garde aux commandes pendant que Cowork
-              fait le gros du travail.
+              Claude Cowork simplifie le travail de connaissance grâce à un processus simple en quatre étapes qui met l'autonomie de l'IA à votre service.
             </p>
             <div class="steps">
               <div class="step card">
-                <span>1</span>
+                <span>01</span>
                 <div>
-                  <h3>Définir l'objectif</h3>
-                  <p>Décrivez le résultat en langage naturel, comme à un collègue.</p>
+                  <h3>Accorder l'accès au dossier</h3>
+                  <p>Ouvrez Claude Desktop et naviguez vers l'interface Cowork. Sélectionnez le dossier spécifique où vous souhaitez que Claude Cowork opère. L'agent ne peut accéder qu'aux fichiers dans les dossiers que vous accordez explicitement, garantissant un contrôle complet sur vos données. Ce dossier devient l'espace de travail où Claude Cowork lit les fichiers existants et en crée de nouveaux.</p>
                 </div>
               </div>
               <div class="step card">
-                <span>2</span>
+                <span>02</span>
                 <div>
-                  <h3>Construire le plan</h3>
-                  <p>Claude crée une approche étape par étape et confirme avant l'exécution.</p>
+                  <h3>Décrivez votre tâche</h3>
+                  <p>Dites à Claude Cowork ce dont vous avez besoin en langage naturel. Aucune expertise technique requise—décrivez simplement le résultat souhaité. Exemples : "Créez un rapport de dépenses à partir de ces captures d'écran de reçus", "Organisez mon dossier de téléchargements par type de fichier" ou "Rédigez un rapport récapitulatif à partir de mes notes de réunion". Claude Cowork comprend le contexte et l'intention.</p>
                 </div>
               </div>
               <div class="step card">
-                <span>3</span>
+                <span>03</span>
                 <div>
-                  <h3>Exécuter en sécurité</h3>
-                  <p>Les tâches s'exécutent dans une VM isolée avec une visibilité et un contrôle clairs.</p>
+                  <h3>Observer l'exécution autonome</h3>
+                  <p>Claude Cowork analyse votre demande, crée un plan d'exécution et commence à travailler de manière autonome. L'interface affiche des mises à jour de progression en temps réel pendant que l'agent lit les fichiers, traite les informations et crée des sorties. Les sous-agents gèrent les tâches parallèles lorsque c'est bénéfique, optimisant la vitesse tout en maintenant la qualité. Vous restez informé sans avoir besoin de microgérer.</p>
                 </div>
               </div>
               <div class="step card">
-                <span>4</span>
+                <span>04</span>
                 <div>
-                  <h3>Recevoir les résultats</h3>
-                  <p>Les résultats arrivent directement dans vos dossiers locaux, prêts à être envoyés.</p>
+                  <h3>Examiner et affiner</h3>
+                  <p>Une fois terminé, examinez les résultats directement dans votre dossier d'espace de travail. Claude Cowork crée de nouveaux fichiers, met à jour les existants ou réorganise les structures comme demandé. Besoin d'ajustements ? Fournissez des commentaires en langage naturel et Claude Cowork affinera la sortie. L'agent apprend de vos préférences pour améliorer l'exécution future des tâches.</p>
                 </div>
               </div>
             </div>
@@ -916,10 +915,54 @@
                 </p>
               </details>
               <details class="card">
-                <summary>Quelles langues sont prises en charge ?</summary>
+                <summary>Comment fonctionne le contrôle de mission en direct ?</summary>
                 <p>
-                  Anglais (par défaut), chinois simplifié, japonais, espagnol, allemand et français
-                  avec un sélecteur manuel.
+                  Une surface de contrôle dédiée montre comment Cowork planifie, exécute et livre le travail.
+                  Vous pouvez voir chaque étape avant son exécution, surveiller les actions en temps réel,
+                  mettre en pause ou intervenir à tout moment. Claude divise les objectifs en sous-tâches
+                  parallèles, les exécute dans une VM isolée avec votre approbation et livre les fichiers
+                  terminés dans vos dossiers locaux.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Qu'est-ce que la collaboration de sous-agents ?</summary>
+                <p>
+                  Les objectifs complexes sont automatiquement divisés en sous-tâches parallèles qui s'exécutent
+                  simultanément pour des résultats plus rapides. Au lieu de tout gérer séquentiellement, Cowork
+                  coordonne plusieurs agents travaillant sur différentes parties du même projet.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Quelle est la sécurité de l'isolement VM ?</summary>
+                <p>
+                  Chaque action s'exécute dans une machine virtuelle dédiée, protégeant votre système et garantissant
+                  des limites claires entre l'automatisation IA et votre environnement central. Vous avez une supervision
+                  en temps réel, pouvez accorder uniquement les dossiers nécessaires pour chaque tâche et maintenir un
+                  contrôle total avec une piste d'audit de chaque action.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Quels sont quelques cas d'utilisation pratiques ?</summary>
+                <p>
+                  Cowork gère le travail de bureau multi-étapes comme l'analyse financière (agréger les CSV en rapports
+                  polis), la recherche de marché (collecter des sources et formater des briefs) et le nettoyage de documents
+                  (renommer, catégoriser et résumer des milliers de fichiers). Il est conçu pour un vrai travail de bureau
+                  qui nécessite une coordination entre plusieurs fichiers et formats.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Puis-je voir le plan avant son exécution ?</summary>
+                <p>
+                  Oui. Claude crée une approche étape par étape lisible par l'homme et confirme avec vous avant l'exécution.
+                  Vous savez toujours ce qui va se passer avant que l'automatisation ne s'exécute, vous donnant une visibilité
+                  et un contrôle complets.
+                </p>
+              </details>
+              <details class="card">
+                <summary>Quels sont les exigences système nécessaires ?</summary>
+                <p>
+                  Vous avez besoin de macOS avec Claude Desktop installé et un abonnement Claude Max actif. Le travail se produit
+                  localement dans une VM isolée, donc vos fichiers ne quittent jamais votre machine.
                 </p>
               </details>
             </div>

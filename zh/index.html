@@ -782,35 +782,35 @@
           <div class="container" data-reveal>
             <h2>工作原理</h2>
             <p class="section-lead">
-              简单四步流程让你掌控全局，Cowork 负责重活。
+              Claude Cowork 通过简单的四步流程简化知识工作，让 AI 自主为你服务。
             </p>
             <div class="steps">
               <div class="step card">
-                <span>1</span>
+                <span>01</span>
                 <div>
-                  <h3>设定目标</h3>
-                  <p>用自然语言描述期望结果，就像和同事沟通。</p>
+                  <h3>授予文件夹访问权限</h3>
+                  <p>打开 Claude Desktop 并导航到 Cowork 界面。选择你希望 Claude Cowork 操作的特定文件夹。代理只能访问你明确授予的文件夹内的文件——确保你对数据的完全控制。此文件夹成为 Claude Cowork 读取现有文件和创建新文件的工作空间。</p>
                 </div>
               </div>
               <div class="step card">
-                <span>2</span>
+                <span>02</span>
                 <div>
-                  <h3>制定计划</h3>
-                  <p>Claude 创建分步方案并在执行前确认。</p>
+                  <h3>描述你的任务</h3>
+                  <p>用自然语言告诉 Claude Cowork 你需要什么。无需技术专业知识——只需描述你想要的成果。示例："从这些收据截图中创建费用报告"、"按文件类型整理我的下载文件夹"或"从我的会议笔记中起草摘要报告"。Claude Cowork 理解上下文和意图。</p>
                 </div>
               </div>
               <div class="step card">
-                <span>3</span>
+                <span>03</span>
                 <div>
-                  <h3>安全执行</h3>
-                  <p>任务在隔离的 VM 中运行，透明可控。</p>
+                  <h3>观看自主执行</h3>
+                  <p>Claude Cowork 分析你的请求，创建执行计划，然后开始自主工作。界面显示实时进度更新，包括代理读取文件、处理信息和创建输出的过程。子代理在有益时处理并行任务，在保持质量的同时优化速度。你无需微观管理即可随时了解情况。</p>
                 </div>
               </div>
               <div class="step card">
-                <span>4</span>
+                <span>04</span>
                 <div>
-                  <h3>接收成果</h3>
-                  <p>输出直接落入本地文件夹，随时发送。</p>
+                  <h3>审查和优化</h3>
+                  <p>完成后，直接在工作空间文件夹中查看结果。Claude Cowork 会根据要求创建新文件、更新现有文件或重组结构。需要调整？用自然语言提供反馈，Claude Cowork 将优化输出。代理会从你的偏好中学习，以改进未来的任务执行。</p>
                 </div>
               </div>
             </div>
@@ -904,9 +904,47 @@
                 </p>
               </details>
               <details class="card">
-                <summary>支持哪些语言？</summary>
+                <summary>实时任务控制是如何工作的？</summary>
                 <p>
-                  支持英语（默认）、简体中文、日语、西班牙语、德语和法语，并提供手动切换器。
+                  专用控制界面显示 Cowork 如何规划、执行和交付工作。你可以在运行前查看每一步，实时监控操作，
+                  随时暂停或干预。Claude 将目标分解为并行子任务，在隔离 VM 内经你批准后执行，并将完成文件
+                  交付到本地文件夹。
+                </p>
+              </details>
+              <details class="card">
+                <summary>什么是子代理协作？</summary>
+                <p>
+                  复杂目标会自动拆分为并行子任务，同时运行以加快结果产出。Cowork 不是顺序处理所有内容，
+                  而是协调多个代理在同一项目的不同部分协同工作。
+                </p>
+              </details>
+              <details class="card">
+                <summary>VM 隔离有多安全？</summary>
+                <p>
+                  每个操作都在专用虚拟机内运行，保护你的系统，确保 AI 自动化与核心环境之间有明确边界。
+                  你可以实时监督，仅授予任务所需的文件夹权限，并通过每个操作的审计跟踪保持完全控制。
+                </p>
+              </details>
+              <details class="card">
+                <summary>有哪些实际使用场景？</summary>
+                <p>
+                  Cowork 处理多步骤办公工作，如财务分析（将 CSV 汇总为精美报告）、市场调研（收集来源并
+                  格式化简报）和文档整理（重命名、分类和总结数千个文件）。它专为需要跨多个文件和格式
+                  协调的真实办公工作而设计。
+                </p>
+              </details>
+              <details class="card">
+                <summary>我能在执行前查看计划吗？</summary>
+                <p>
+                  可以。Claude 会创建人类可读的分步方法，并在执行前与你确认。你始终知道自动化运行前会发生什么，
+                  获得完全的可见性和控制权。
+                </p>
+              </details>
+              <details class="card">
+                <summary>我需要什么系统要求？</summary>
+                <p>
+                  你需要安装 Claude Desktop 的 macOS 和有效的 Claude Max 订阅。工作发生在隔离 VM 的本地环境中，
+                  因此你的文件永远不会离开你的机器。
                 </p>
               </details>
             </div>
