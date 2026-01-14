@@ -12,6 +12,7 @@
       name="keywords"
       content="claude cowork, anthropic claude, ai knowledge work, autonomous ai agent, claude desktop, ai productivity, file automation"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
       :root {
         --ink: #141413;
@@ -123,13 +124,16 @@
         width: 36px;
         height: 36px;
         border-radius: 12px;
-        background: conic-gradient(
-          from 120deg,
-          var(--accent-1),
-          var(--accent-2),
-          var(--accent-3),
-          var(--accent-1)
-        );
+        background: #D97757;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+      
+      .brand-mark i {
+        color: white;
+        font-size: 18px;
       }
 
       .nav-links {
@@ -181,6 +185,8 @@
         text-transform: uppercase;
         letter-spacing: 0.08em;
         cursor: pointer;
+        color: var(--ink);
+        font-weight: 600;
       }
 
       .lang-dropdown::after {
@@ -677,7 +683,9 @@
       <header>
         <div class="container nav">
           <div class="brand">
-            <span class="brand-mark" aria-hidden="true"></span>
+            <span class="brand-mark" aria-hidden="true" title="Cowork">
+              <i class="fas fa-users-cog"></i>
+            </span>
             Cowork
           </div>
           <nav class="nav-links" aria-label="Primary">
@@ -687,13 +695,13 @@
           </nav>
           <div class="nav-cta">
             <div class="lang-dropdown">
-              <select aria-label="Language">
-                <option selected>English</option>
-                <option>Simplified Chinese</option>
-                <option>Japanese</option>
-                <option>Spanish</option>
-                <option>German</option>
-                <option>French</option>
+              <select aria-label="Language" data-locale-select>
+                <option value="en" selected>English</option>
+                <option value="zh">简体中文</option>
+                <option value="ja">日本語</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="fr">Français</option>
               </select>
             </div>
             <a class="btn btn-primary" href="guide.html">Get Started</a>
