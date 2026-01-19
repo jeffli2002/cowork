@@ -1026,6 +1026,19 @@
         { threshold: 0.2 }
       );
       revealItems.forEach((item) => observer.observe(item));
+
+      // Handle locale switching
+      const localeSelect = document.querySelector("[data-locale-select]");
+      if (localeSelect) {
+        localeSelect.addEventListener("change", (e) => {
+          const selectedLocale = e.target.value;
+          if (selectedLocale === "en") {
+            window.location.href = "/";
+          } else {
+            window.location.href = `/${selectedLocale}/`;
+          }
+        });
+      }
     </script>
   </body>
 </html>
